@@ -107,9 +107,13 @@
   height: 80px;
   background-color: white;
   animation: scrollMenuBot 1s;
-
+  .menu-logo {
+    a {
+      color: $colorOrange !important;
+    }
+  }
   a {
-    color: $colorOrange !important;
+    color: black !important;
     text-shadow: none !important;
   }
 }
