@@ -1,4 +1,5 @@
 import { Container } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import React from "react";
 import img1 from "../../../images/pet9.jpg";
 import img2 from "../../../images/pet2.jpg";
@@ -14,7 +15,12 @@ export default function News() {
     <div className="News">
       <div className="heading">
         <div className="heading__title">
-          <h3>Tin tức động vật</h3>
+          <h3>
+            <Link to="/ListNews" className="link-color-orange">
+              Tin tức
+            </Link>{" "}
+            động vật
+          </h3>
         </div>
         <div className="heading__hr"></div>
       </div>
@@ -25,7 +31,9 @@ export default function News() {
               <img src={img1} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link to="/ListNews/1">Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
               <div className="text-content">
                 Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
                 người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
@@ -42,7 +50,9 @@ export default function News() {
               <img src={img2} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
               <div className="text-content">
                 Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
                 người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
@@ -59,7 +69,9 @@ export default function News() {
               <img src={img3} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
               <div className="text-content">
                 Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
                 người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
@@ -76,7 +88,9 @@ export default function News() {
               <img src={img4} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
               <div className="text-content">
                 Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
                 người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
@@ -93,7 +107,9 @@ export default function News() {
               <img src={img5} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
             </div>
           </div>
           <div className="new-item ">
@@ -101,7 +117,9 @@ export default function News() {
               <img src={img6} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
             </div>
           </div>
           <div className="new-item ">
@@ -109,7 +127,9 @@ export default function News() {
               <img src={img7} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
             </div>
           </div>
           <div className="new-item ">
@@ -117,7 +137,9 @@ export default function News() {
               <img src={img8} alt="" />
             </div>
             <div className="text">
-              <div className="text-title">Cẩm nâng nuôi thú cưng tại nhà</div>
+              <div className="text-title">
+                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
+              </div>
             </div>
           </div>
         </div>

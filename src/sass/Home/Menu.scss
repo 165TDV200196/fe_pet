@@ -10,10 +10,12 @@
   z-index: 200;
   animation: scrollMenuTop 1s;
   .menu-logo {
-    font-size: 2rem;
-    margin-left: 2rem;
-    color: $colorOgrange;
-    text-shadow: 1px 1px 2px black;
+    a {
+      font-size: 2rem;
+      margin-left: 2rem;
+      color: $colorOrange;
+      text-shadow: 1px 1px 2px black;
+    }
   }
   .menu-item {
     .list-item ul {
@@ -56,7 +58,7 @@
         border-bottom-right-radius: 50px;
         top: 0;
         right: 0;
-        background-color: $colorOgrange;
+        background-color: $colorOrange;
         .fa-search {
           width: 15px;
           height: 15px;
@@ -86,7 +88,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $colorOgrange;
+    background-color: $colorOrange;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 2rem;
@@ -105,11 +107,9 @@
   height: 80px;
   background-color: white;
   animation: scrollMenuBot 1s;
-  .menu-logo {
-    color: black;
-  }
+
   a {
-    color: black !important;
+    color: $colorOrange !important;
     text-shadow: none !important;
   }
 }

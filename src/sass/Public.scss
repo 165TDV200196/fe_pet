@@ -13,12 +13,43 @@
   &__hr {
     width: 200px;
     height: 2px;
-    background-color: $colorOgrange;
+    background-color: $colorOrange;
     margin: 0 auto;
     margin-top: 1rem;
+  }
+}
+.heading-detail {
+  margin-bottom: 2rem;
+  &__title h3 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  &__hr {
+    width: 200px;
+    height: 2px;
+    background-color: $colorOrange;
   }
 }
 .text-white {
   color: white;
   text-shadow: 2px 2px 5px black;
+}
+.link-color-orange {
+  color: $colorOrange;
+  text-decoration: none;
+  transition: 0.5s;
+  &:hover {
+    color: $colorViolet;
+  }
+}
+a {
+  text-decoration: none;
+}
+.MuiPagination-root {
+  margin: 1rem 0 2rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.MuiGrid-spacing-xs-2 > .MuiGrid-item {
+  display: flex;
 }

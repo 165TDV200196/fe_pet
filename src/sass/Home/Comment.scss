@@ -5,11 +5,7 @@
   .comment-content {
     .comment-list {
       .comment-item {
-        display: flex;
-        justify-content: center;
         .item {
-          max-width: 40%;
-          padding: 0 2rem;
           cursor: default;
           .user {
             display: flex;
@@ -37,7 +33,7 @@
           .icon {
             width: 15px;
             height: 15px;
-            color: $colorOgrange;
+            color: $colorOrange;
           }
           .end {
             float: right;
@@ -53,6 +49,6 @@
     }
   }
   .MuiRating-root {
-    color: $colorOgrange !important;
+    color: $colorOrange !important;
   }
 }

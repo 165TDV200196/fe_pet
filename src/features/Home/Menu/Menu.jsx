@@ -7,7 +7,9 @@ export default function Menu() {
   return (
     <div className="Menu ">
       <div className="menu-logo">
-        <div className="logo">my pet</div>
+        <div className="logo">
+          <Link to="/">my pet</Link>
+        </div>
       </div>
       <div className="menu-bar">
         <div className="icon-bar">
@@ -37,7 +39,7 @@ export default function Menu() {
                 <Link>Trang chủ</Link>
               </li>
               <li className="item">
-                <Link>Dịch vụ</Link>
+                <Link to="/Shop">Cửa hàng</Link>
               </li>
               <li className="item">
                 <Link>Giới thiệu</Link>

@@ -11,7 +11,6 @@ import Slide from "./Slide/Slide.jsx";
 export default function Home() {
   return (
     <>
-      <Menu />
       <Slide />
       <AboutUs />
       <Services />

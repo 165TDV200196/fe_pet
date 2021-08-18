@@ -4,7 +4,7 @@
   .post-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     grid-template-areas:
       "h1 h2 h3 h4"
       "h5 h6 h6 h7"
@@ -41,6 +41,60 @@
       }
       &:nth-child(9) {
         grid-area: h9;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .Gallery {
+    .post-grid {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .post-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .post-grid {
+      grid-template-columns: unset;
+      grid-template-areas: none;
+      grid-auto-flow: column;
+      grid-auto-columns: 80%;
+      grid-gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-snap-stop: always;
+      .grid-item {
+        scroll-snap-align: start;
+        img {
+          border-radius: 5px;
+        }
+        &:nth-child(1) {
+          grid-area: unset;
+        }
+        &:nth-child(2) {
+          grid-area: unset;
+        }
+        &:nth-child(3) {
+          grid-area: unset;
+        }
+        &:nth-child(4) {
+          grid-area: unset;
+        }
+        &:nth-child(5) {
+          grid-area: unset;
+        }
+        &:nth-child(6) {
+          grid-area: unset;
+        }
+        &:nth-child(7) {
+          grid-area: unset;
+        }
+        &:nth-child(8) {
+          grid-area: unset;
+        }
+        &:nth-child(9) {
+          grid-area: unset;
+        }
       }
     }
   }

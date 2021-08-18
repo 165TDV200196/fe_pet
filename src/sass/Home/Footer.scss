@@ -1,14 +1,19 @@
 @import "../Variable.scss";
 .Footer {
+  margin-top: 1rem;
   padding: 3rem 0 4rem 0;
   background: url("../../images/dots.png");
   color: white;
   background-color: #353a40;
+  .about {
+    text-indent: 1rem;
+  }
   .footer-content {
     .footer-item {
       display: flex;
       flex-direction: column;
       padding: 0 1rem;
+      margin-bottom: 2rem;
       .item-title {
         font-size: 1.3rem;
         font-weight: 500;
@@ -19,7 +24,7 @@
         margin: 0.5rem 0 1rem 0;
         width: 90%;
         height: 1px;
-        background-color: $colorOgrange;
+        background-color: $colorOrange;
       }
       .item-content {
         font-size: 1rem;
@@ -58,7 +63,7 @@
               transition: 0.5s;
               margin-left: 0.6rem;
               &:hover {
-                color: $colorOgrange;
+                color: $colorOrange;
                 transform: translateX(10px);
               }
             }

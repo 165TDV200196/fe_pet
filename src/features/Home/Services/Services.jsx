@@ -96,7 +96,7 @@ export default function Services() {
             <div className="description">
               Thăm khám sức khoẻ cho thú cưng của bạn với các chuyên qia hàng
               đầu trong lĩnh vực
-            </div>{" "}
+            </div>
             <div className="btn">
               <Link>Đăng ký ngay</Link>
             </div>
@@ -124,7 +124,7 @@ export default function Services() {
             <div className="description">
               Làm sạch khoang miệng thú cưng của bạn để chúng một hơi thở thơm
               tho hơn
-            </div>{" "}
+            </div>
             <div className="btn">
               <Link>Đăng ký ngay</Link>
             </div>
@@ -152,7 +152,7 @@ export default function Services() {
             <div className="description">
               Dùng các máy móc hiện đại để làm sạch tai tránh các sinh vật khác
               làm ổ bên trong
-            </div>{" "}
+            </div>
             <div className="btn">
               <Link>Đăng ký ngay</Link>
             </div>
@@ -180,7 +180,7 @@ export default function Services() {
             <div className="description">
               Thú cưng được chăm sóc định kỳ hàng tháng khi đăng ký gói khám
               định kỳ của công ty
-            </div>{" "}
+            </div>
             <div className="btn">
               <Link>Đăng ký ngay</Link>
             </div>
