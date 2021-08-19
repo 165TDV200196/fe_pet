@@ -1,6 +1,6 @@
 import { Container, Grid } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams, useRouteMatch } from "react-router-dom";
 import img1 from "../../images/pet8.jpg";
 import "../../sass/ListNews/ListNews.scss";
@@ -10,6 +10,9 @@ import Footer from "../Home/Footer/Footer";
 export default function ListNews() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Tin tức" }];
   const { path } = useRouteMatch();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="ListNews">
       <Banner />

@@ -1,15 +1,19 @@
 import { Container, Grid } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../../Banner/Banner";
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 import Footer from "../../Home/Footer/Footer";
 import img1 from "../../../images/pet-colum.jpg";
 import img2 from "../../../images/pet-colum2.jpg";
 import "../../../sass/Shop/ShopPet.scss";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { Pagination } from "@material-ui/lab";
 export default function ShopPet() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Cửa hàng" }];
+  const { path } = useRouteMatch();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="Shop">
       <Banner />
@@ -104,7 +108,7 @@ export default function ShopPet() {
                     <div className="blur"></div>
                   </div>
                   <div className="name">
-                    <Link>Chó shiba</Link>
+                    <Link to={`${path}/1`}>Chó shibaa</Link>
                   </div>
                   <div className="price">
                     <div className="price1">

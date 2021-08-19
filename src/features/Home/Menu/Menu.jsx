@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../../sass/Home/Menu.scss";
 import "./menu";
 import imgCat from "../../../images/cat1.jpg";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 export default function Menu() {
+  const [openSelect, setOpenSelect] = useState("hident");
+  const ClickAvatar = () => {
+    setOpenSelect(openSelect === "hident" ? "" : "hident");
+  };
+  const selectEL = useRef("null");
+  const asd = "hidden";
   return (
     <div className="Menu ">
       <div className="menu-logo">
@@ -45,7 +52,7 @@ export default function Menu() {
                 <Link>Giới thiệu</Link>
               </li>
               <li className="item">
-                <Link>Tin tức</Link>
+                <Link to="/ListNews">Tin tức</Link>
               </li>
             </ul>
           </div>
@@ -72,9 +79,39 @@ export default function Menu() {
               </svg>
             </div>
           </div>
-          <div className="avatar">
+          <div className="avatar" onClick={ClickAvatar}>
             <img src={imgCat} alt="" />
           </div>
+          <div className={`select ${openSelect}`} ref={selectEL}>
+            <ul>
+              <li>
+                <Link>Đăng nhập</Link>
+              </li>
+              <li>
+                <Link>ád</Link>
+              </li>
+              <li>
+                <Link>fd</Link>
+              </li>
+            </ul>
+          </div>
+          {/* <FormControl>
+            <Select
+              hidden="true"
+              open={open}
+              onClose={handleClose}
+              onOpen={handleOpen}
+              value={age}
+              onChange={handleChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl> */}
         </div>
       </div>
     </div>

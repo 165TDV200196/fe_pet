@@ -1,5 +1,5 @@
 import { Container, Grid } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../../Banner/Banner";
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 import img1 from "../../../images/pet4.jpg";
@@ -13,13 +13,16 @@ export default function DetailNew() {
     { name: "Tin tức", link: "/ListNews" },
     { name: "Tên tin tức" },
   ];
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="DetailNew">
       <Banner />
       <Breadcrumbs breadCrumbList={listBread} />
       <Container>
         <Grid container spacing={3}>
-          <Grid item lg={8}>
+          <Grid item lg={8} md={8} sm={12}>
             <div className="new">
               <div className="new-title">
                 Mẹo độc đáo không ngờ cho người tìm việc
@@ -102,7 +105,7 @@ export default function DetailNew() {
               </div>
             </div>
           </Grid>
-          <Grid item lg={4}>
+          <Grid item lg={4} md={4} sm={12}>
             <div className="other">
               <div className="other-new">
                 <div className="other-new-title">Có thể bạn quan tâm</div>
