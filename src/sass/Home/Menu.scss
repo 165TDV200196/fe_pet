@@ -102,11 +102,33 @@
       align-items: center;
     }
   }
+  .select {
+    position: absolute;
+    left: 100%;
+    top: 85px;
+    background-color: white;
+    width: 200px;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    animation: openSelect 0.5s forwards;
+    ul {
+      list-style-type: none;
+      li {
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+  .hident {
+    animation: closeSelect 0.5s;
+  }
 }
 .menu-scroll {
   height: 80px;
   background-color: white;
   animation: scrollMenuBot 1s;
+  box-shadow: $boxShadow;
   .menu-logo {
     a {
       color: $colorOrange !important;
@@ -115,6 +137,28 @@
   a {
     color: black !important;
     text-shadow: none !important;
+  }
+}
+@keyframes openSelect {
+  0% {
+    transform: translateX(0);
+  }
+  70% {
+    transform: translateX(-260px);
+  }
+  100% {
+    transform: translateX(-250px);
+  }
+}
+@keyframes closeSelect {
+  100% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-260px);
+  }
+  0% {
+    transform: translateX(-250px);
   }
 }
 @keyframes scrollMenuBot {
