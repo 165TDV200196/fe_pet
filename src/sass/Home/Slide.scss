@@ -112,3 +112,17 @@
     clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%) !important;
   }
 }
+@media screen and (max-width: 768px) {
+  .Slide {
+    .slide-content {
+      left: 50px !important;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .Slide {
+    .slide-content {
+      left: 40px !important;
+    }
+  }
+}

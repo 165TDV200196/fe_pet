@@ -1,4 +1,7 @@
 @import "../Variable.scss";
+.hident-menu {
+  display: none !important;
+}
 .Menu {
   background-color: transparent;
   width: 100%;
@@ -104,6 +107,7 @@
   }
   .select {
     position: absolute;
+    box-shadow: $boxShadowHover;
     left: 100%;
     top: 85px;
     background-color: white;
@@ -115,7 +119,27 @@
       list-style-type: none;
       li {
         a {
+          padding: 0.5rem 0;
+          display: block;
           color: black;
+          display: flex;
+          align-items: center;
+          .icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            svg {
+              width: 20px;
+              height: 20px;
+              color: gray;
+            }
+          }
+          &:hover {
+            color: $colorOrange;
+          }
         }
       }
     }
@@ -210,6 +234,16 @@
     .menu-account {
       justify-content: center;
       padding: 2rem;
+      margin-right: 0;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .Menu {
+    .menu-account .search {
+      input {
+        width: 100px;
+      }
     }
   }
 }
