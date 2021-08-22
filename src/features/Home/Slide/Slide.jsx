@@ -3,12 +3,20 @@ import "../../../sass/Home/Slide.scss";
 import imgCat from "../../../images/cat1.jpg";
 import imgDog from "../../../images/dog1.jpg";
 import imgVoi from "../../../images/voi1.jpg";
-import "./slide";
+import { useRef } from "react";
+import { useEffect } from "react";
+import { slideHome } from "./slide";
 export default function Slide() {
+  const slideEl = useRef(null);
+
+  useEffect(() => {
+    slideHome(slideEl.current);
+  }, []);
+
   return (
     <div className="Slide">
       <div className="slideWrapper">
-        <div className="slides">
+        <div className="slides" ref={slideEl}>
           <div className="blur"></div>
           <div
             className="slide-item slide-active"

@@ -5,7 +5,9 @@ import "../../../sass/Home/Menu.scss";
 import "./menu";
 export default function Menu() {
   const [openSelect, setOpenSelect] = useState("hident");
+  const [initSelect, setinitSelect] = useState("none");
   const ClickAvatar = () => {
+    setinitSelect("flex");
     setOpenSelect(openSelect === "hident" ? "" : "hident");
   };
   const selectEL = useRef("null");
@@ -81,7 +83,11 @@ export default function Menu() {
           <div className="avatar" onClick={ClickAvatar}>
             <img src={imgCat} alt="" />
           </div>
-          <div className={`select ${openSelect}`} ref={selectEL}>
+          <div
+            className={`select ${openSelect}`}
+            style={{ display: `${initSelect}` }}
+            ref={selectEL}
+          >
             <ul>
               <li>
                 <Link to="/Login">

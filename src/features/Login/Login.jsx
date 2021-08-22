@@ -106,7 +106,9 @@ export default function Login() {
           <span>Quên mật khẩu?</span>
         </div>
         <div className="btn-login">
-          <button>Đăng nhập</button>
+          <button>
+            <Link to="/">Đăng nhập</Link>
+          </button>
         </div>
         <div className="login-other">
           <div className="text">Hoặc đăng nhập với</div>

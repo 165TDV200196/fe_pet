@@ -11,13 +11,18 @@ import img5 from "../../../images/pet5.jpg";
 import "../../../sass/Shop/DetailPet.scss";
 import "./DetailPetJs";
 import Related from "../Related/Related";
+import { useRef } from "react";
+import { ClickImg } from "./DetailPetJs";
 export default function DetailPet() {
   const listBread = [
     { name: "Trang chủ", link: "/" },
     { name: "Cửa hàng", link: "/Shop" },
     { name: "ten san pham" },
   ];
+  const imgActiveEl = useRef(null);
+  const listImgEl = useRef(null);
   useEffect(() => {
+    ClickImg(imgActiveEl.current, listImgEl.current);
     window.scrollTo(0, 0);
   }, []);
   return (
@@ -26,12 +31,12 @@ export default function DetailPet() {
       <Breadcrumbs breadCrumbList={listBread} />
       <div className="container">
         <Grid container spacing={3}>
-          <Grid item lg={5} md={5} sm={5}>
+          <Grid item lg={5} md={5} sm={5} xs={12}>
             <div className="product-img">
               <div className="img-active">
-                <img src={img2} alt="" />
+                <img src={img2} alt="" ref={imgActiveEl} />
               </div>
-              <div className="list-img">
+              <div className="list-img" ref={listImgEl}>
                 <div className="img ">
                   <img src={img2} alt="" />
                 </div>
@@ -47,7 +52,7 @@ export default function DetailPet() {
               </div>
             </div>
           </Grid>
-          <Grid item lg={7} md={7} sm={7}>
+          <Grid item lg={7} md={7} sm={7} xs={12}>
             <div className="item-content">
               <div className="name">Chó Shiba</div>
               <div className="price">
