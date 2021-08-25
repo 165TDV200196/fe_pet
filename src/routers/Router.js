@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Nav from "../features/Admin/Nav/Nav";
 import Home from "../features/Home";
 import Menu from "../features/Home/Menu/Menu.jsx";
 import DetailNew from "../features/ListNews/DetailNew/DetailNew";
@@ -14,6 +15,7 @@ export default function Routers() {
       <Router>
         <Switch>
           <Route path="/Login" component={Menu} />
+          <Route path="/Admin" component={Menu} />
           <Route path="/Register" component={Menu} />
           <Route component={Menu} />
         </Switch>
@@ -27,6 +29,7 @@ export default function Routers() {
           <Route path="/Shop/:id" component={DetailPet} />
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
+          <Route path="/Admin" component={Nav} />
         </Switch>
       </Router>
     </div>
