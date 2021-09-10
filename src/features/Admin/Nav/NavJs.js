@@ -1,4 +1,4 @@
-export const clickActive = (ul, line) => {
+export const clickActive = (ul, line, liIndex) => {
   const listLi = ul.querySelectorAll("li a");
   const listActive = ul.querySelector("li>a.active");
 
@@ -25,7 +25,7 @@ export const clickActive = (ul, line) => {
     }
     return result;
   };
-  lineSlide(0, listActive);
+  lineSlide(liIndex, listActive);
 };
 export const clickBar = (bar) => {
   let menuAdmin = document.querySelector(".nav-left");
@@ -40,5 +40,18 @@ export const clickBar = (bar) => {
       contentRight.style.marginLeft = "279px";
       contentRight.style.width = "Calc(100% - 279px)";
     }
+  };
+};
+export const clickAvatar = (El) => {
+  let avatar = El.querySelector(".avatar");
+  let select = El.querySelector(".SelectAvatar");
+  let blur = El.querySelector(".blurJs");
+  avatar.onclick = function (e) {
+    select.classList.toggle("active");
+    blur.classList.toggle("blur");
+  };
+  blur.onclick = function (e) {
+    select.classList.toggle("active");
+    blur.classList.toggle("blur");
   };
 };

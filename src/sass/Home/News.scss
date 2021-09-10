@@ -44,6 +44,11 @@
           font-size: 1.2rem;
           font-weight: 500;
           transition: 0.5s;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
+          overflow: hidden;
           a {
             text-decoration: none;
             color: black;
@@ -92,53 +97,36 @@
           overflow: hidden;
         }
       }
-      &:nth-child(5) {
-        grid-area: h5;
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8) {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         .img {
-          width: 100px;
+          width: 100px !important;
           height: 100%;
         }
         .text {
-          display: flex;
-          align-items: center;
+          padding: 0;
+          width: Calc(100% - 110px);
+          .text-content {
+            display: none;
+          }
         }
+      }
+      &:nth-child(5) {
+        grid-area: h5;
       }
       &:nth-child(6) {
         grid-area: h6;
-        display: flex;
-        .img {
-          width: 100px;
-          height: 100%;
-        }
-        .text {
-          display: flex;
-          align-items: center;
-        }
       }
       &:nth-child(7) {
         grid-area: h7;
-        display: flex;
-        .img {
-          width: 100px;
-          height: 100%;
-        }
-        .text {
-          display: flex;
-          align-items: center;
-        }
       }
       &:nth-child(8) {
         grid-area: h8;
-        display: flex;
-        .img {
-          width: 100px;
-          height: 100%;
-        }
-        .text {
-          display: flex;
-          align-items: center;
-        }
       }
     }
   }

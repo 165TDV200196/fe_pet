@@ -1,18 +1,26 @@
 import { Container, Grid } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams, useRouteMatch } from "react-router-dom";
 import img1 from "../../images/pet8.jpg";
 import "../../sass/ListNews/ListNews.scss";
 import Banner from "../Banner/Banner";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import Footer from "../Home/Footer/Footer";
+import newApi from "../../api/newApi";
+import { countPagination } from "../../function";
+
 export default function ListNews() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Tin tức" }];
   const { path } = useRouteMatch();
+  const [data, setData] = useState();
+  const [page, setPage] = useState(1);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    newApi.getNewHome({ page: page }).then((ok) => {
+      setData(ok.data);
+    });
+  }, [page]);
   return (
     <div className="ListNews">
       <Banner />
@@ -25,202 +33,27 @@ export default function ListNews() {
           <div className="heading-detail__hr"></div>
         </div>
         <Grid container spacing={2} className="content-item">
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn Công thức thức ăn của
-                    thú cưng của bạn
-                  </Link>
+          {data?.rows?.map((ok) => (
+            <Grid item lg={3} md={3} sm={6}>
+              <div className="item-new">
+                <div className="img">
+                  <img src={ok.avatar} alt="" />
                 </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
+                <div className="text">
+                  <div className="text-title">
+                    <Link to={`${path}/${ok.id}`}>{ok.name}</Link>
+                  </div>
+                  <div className="text-content">{ok.samary}</div>
                 </div>
               </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item lg={3} md={3} sm={6}>
-            <div className="item-new">
-              <div className="img">
-                <img src={img1} alt="" />
-              </div>
-              <div className="text">
-                <div className="text-title">
-                  <Link to={`${path}/1`}>
-                    Công thức thức ăn của thú cưng của bạn
-                  </Link>
-                </div>
-                <div className="text-content">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Harum animi optio tenetur quae totam. Voluptates quae minus
-                  similique. Tempora dignissimos minus eius fugit molestias
-                  saepe amet quasi necessitatibus perferendis ducimus?Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Ex
-                  perferendis consequuntur blanditiis dolores velit unde a
-                  expedita accusamus sed suscipit error nihil debitis aspernatur
-                  neque deleniti doloremque nemo, iure praesentium.
-                </div>
-              </div>
-            </div>
-          </Grid>
+            </Grid>
+          ))}
         </Grid>
         <Pagination
-          count={5}
+          onChange={(e, i) => {
+            setPage(i);
+          }}
+          count={countPagination(data?.count, 8)}
           color="secondary"
           variant="outlined"
           shape="rounded"

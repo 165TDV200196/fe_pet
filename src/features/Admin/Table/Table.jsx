@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import "../../../sass/Admin/Table.scss";
 import { dot, edit, trash } from "../svg/IconSvg";
 import { showAction } from "./TableJs";
-export default function Table({ dataSource, titleTable }) {
+export default function Table({
+  dataSource,
+  titleTable,
+  onchangeEdit,
+  onchangeDelete,
+}) {
   const tableEl = useRef(null);
   useEffect(() => {
     showAction(tableEl.current);
@@ -33,17 +38,27 @@ export default function Table({ dataSource, titleTable }) {
             {arrTitle.map((oki, index1) => (
               <td>{ok[oki]}</td>
             ))}
-            <div className="action">{dot}</div>
+            <td>
+              <div className="action">{dot}</div>
+            </td>
             <div className="action-content action-hident">
               <ul>
                 <li>
-                  <Link>
+                  <Link
+                    onClick={() => {
+                      onchangeDelete(ok.key);
+                    }}
+                  >
                     <div className="icon">{trash}</div>
                     <div className="text">Xoá</div>
                   </Link>
                 </li>
                 <li>
-                  <Link>
+                  <Link
+                    onClick={() => {
+                      onchangeEdit(ok.key);
+                    }}
+                  >
                     <div className="icon">{edit}</div>
                     <div className="text">Sửa</div>
                   </Link>

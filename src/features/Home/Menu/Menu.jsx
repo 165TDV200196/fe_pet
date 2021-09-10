@@ -55,6 +55,9 @@ export default function Menu() {
               <li className="item">
                 <Link to="/ListNews">Tin tức</Link>
               </li>
+              <li className="item">
+                <Link to="/Admin">Admin</Link>
+              </li>
             </ul>
           </div>
         </div>

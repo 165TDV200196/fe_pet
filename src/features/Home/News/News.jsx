@@ -1,16 +1,20 @@
 import { Container } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import React from "react";
-import img1 from "../../../images/pet9.jpg";
-import img2 from "../../../images/pet2.jpg";
-import img3 from "../../../images/pet3.jpg";
-import img4 from "../../../images/pet4.jpg";
-import img5 from "../../../images/pet5.jpg";
-import img6 from "../../../images/pet6.jpg";
-import img7 from "../../../images/pet7.jpg";
-import img8 from "../../../images/pet8.jpg";
+import newApi from "../../../api/newApi";
 import "../../../sass/Home/News.scss";
 export default function News() {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    newApi
+      .getNewHome()
+      .then((ok) => {
+        setData(ok.data.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="News">
       <div className="heading">
@@ -26,122 +30,21 @@ export default function News() {
       </div>
       <Container maxWidth="lg">
         <div className="new-content">
-          <div className="new-item">
-            <div className="img">
-              <img src={img1} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link to="/ListNews/1">Cẩm nâng nuôi thú cưng tại nhà</Link>
+          {data?.map((ok) => (
+            <div className="new-item">
+              <div className="img">
+                <img src={ok.avatar} alt="" />
               </div>
-              <div className="text-content">
-                Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
-                người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
-                những động vật có nguy cơ tuyệt chủng cao do con người săn bắn
-                để làm thức ăn và các đồ trang sức nguy cơ tuyệt chủng cao do
-                con người săn bắn để làm thức ăn và các đồ trang sức nguy cơ
-                tuyệt chủng cao do con người săn bắn để làm thức ăn và các đồ
-                trang sức
+              <div className="text">
+                <div className="text-title">
+                  <Link to={`/ListNews/${ok.id}`} title={ok.name}>
+                    {ok.name}
+                  </Link>
+                </div>
+                <div className="text-content">{ok.samary}</div>
               </div>
             </div>
-          </div>
-          <div className="new-item">
-            <div className="img">
-              <img src={img2} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-              <div className="text-content">
-                Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
-                người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
-                những động vật có nguy cơ tuyệt chủng cao do con người săn bắn
-                để làm thức ăn và các đồ trang sức nguy cơ tuyệt chủng cao do
-                con người săn bắn để làm thức ăn và các đồ trang sức nguy cơ
-                tuyệt chủng cao do con người săn bắn để làm thức ăn và các đồ
-                trang sức
-              </div>
-            </div>
-          </div>
-          <div className="new-item">
-            <div className="img">
-              <img src={img3} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-              <div className="text-content">
-                Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
-                người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
-                những động vật có nguy cơ tuyệt chủng cao do con người săn bắn
-                để làm thức ăn và các đồ trang sức nguy cơ tuyệt chủng cao do
-                con người săn bắn để làm thức ăn và các đồ trang sức nguy cơ
-                tuyệt chủng cao do con người săn bắn để làm thức ăn và các đồ
-                trang sức
-              </div>
-            </div>
-          </div>
-          <div className="new-item">
-            <div className="img">
-              <img src={img4} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-              <div className="text-content">
-                Thú cưng là những động vật có nguy cơ tuyệt chủng cao do con
-                người săn bắn để làm thức ăn và các đồ trang sứcThú cưng là
-                những động vật có nguy cơ tuyệt chủng cao do con người săn bắn
-                để làm thức ăn và các đồ trang sức nguy cơ tuyệt chủng cao do
-                con người săn bắn để làm thức ăn và các đồ trang sức nguy cơ
-                tuyệt chủng cao do con người săn bắn để làm thức ăn và các đồ
-                trang sức
-              </div>
-            </div>
-          </div>
-          <div className="new-item ">
-            <div className="img">
-              <img src={img5} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-            </div>
-          </div>
-          <div className="new-item ">
-            <div className="img">
-              <img src={img6} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-            </div>
-          </div>
-          <div className="new-item ">
-            <div className="img">
-              <img src={img7} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-            </div>
-          </div>
-          <div className="new-item ">
-            <div className="img">
-              <img src={img8} alt="" />
-            </div>
-            <div className="text">
-              <div className="text-title">
-                <Link>Cẩm nâng nuôi thú cưng tại nhà</Link>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </Container>
     </div>
