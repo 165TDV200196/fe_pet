@@ -5,7 +5,7 @@ import imgDog from "../../images/login.png";
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import userApi from "../../api/userApi";
-import { messageShowErr, messageShowSuccess } from "../../function";
+import { getName, messageShowErr, messageShowSuccess } from "../../function";
 import {
   eyeHidenLogin,
   userLogin,
@@ -14,6 +14,7 @@ import {
   facebook,
   twitter,
   google,
+  nameLogin,
 } from "../Admin/svg/IconSvg";
 export default function Register() {
   const [showPass, setShowPass] = useState("password");
@@ -37,13 +38,16 @@ export default function Register() {
   const password = useRef({});
   password.current = watch("password", "");
   const history = useHistory();
+  const avatarDefault =
+    "https://cdn.pixabay.com/photo/2016/11/22/23/18/kingfisher-1851127_960_720.jpg";
   const onSubmit = async (data) => {
     userApi
       .postuser({
         email: data.email,
         password: data.password,
-        firstName: "nguyen",
-        lastName: "van",
+        firstName: getName(data.name).firtsName,
+        lastName: getName(data.name).lastName,
+        avatar: avatarDefault,
         status: 1,
       })
       .then((ok) => {
@@ -80,6 +84,22 @@ export default function Register() {
               </div>
               {errors.email && (
                 <p className="text-danger">{errors.email.message}</p>
+              )}
+            </div>
+            <div className="form-account">
+              <label htmlFor="">Tên người dùng</label>
+              <div className="input">
+                <div className="icon">{nameLogin}</div>
+                <input
+                  type="text"
+                  id=""
+                  {...register("name", {
+                    required: "Không được để trống!",
+                  })}
+                />
+              </div>
+              {errors.name && (
+                <p className="text-danger">{errors.name.message}</p>
               )}
             </div>
             <div className="form-password">
@@ -137,7 +157,7 @@ export default function Register() {
             <div className="btn-login">
               <button style={{ color: "white" }}>Đăng ký</button>
             </div>
-            <div className="login-other">
+            {/* <div className="login-other">
               <div className="text">Hoặc đăng nhập với</div>
               <div className="icon-login">
                 <div className="icon" style={{ backgroundColor: "#087ceb" }}>
@@ -150,7 +170,7 @@ export default function Register() {
                   {google}
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="login-2">
               <Link to="/Login">Đăng nhập</Link>
               <span> nếu bạn đã có tài khoản</span>

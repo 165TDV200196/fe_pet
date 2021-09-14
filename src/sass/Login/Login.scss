@@ -168,10 +168,14 @@
       }
     }
     .register {
-      height: 141px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      position: absolute;
+      bottom: 10px;
+      width: Calc(100% - 4rem);
+      // height: 141px;
+      // display: flex;
+      // align-items: flex-end;
+      // justify-content: center;
+      text-align: center;
       span,
       a {
         font-size: 0.9rem;
@@ -183,10 +187,10 @@
       }
     }
     .login-2 {
-      height: 97px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      position: absolute;
+      bottom: 10px;
+      width: Calc(100% - 4rem);
+      text-align: center;
       span,
       a {
         font-size: 0.9rem;

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../../sass/Login/Login.scss";
 import imgDog from "../../images/login.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   eyeHidenLogin,
   eyeShowLogin,
@@ -12,7 +12,18 @@ import {
   twitter,
   userLogin,
 } from "../Admin/svg/IconSvg";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useForm } from "react-hook-form";
+import userApi from "../../api/userApi";
+import { messageShowErr, messageShowSuccess } from "../../function";
+import loginApi from "../../api/loginApi";
 export default function Login() {
+  // const { loginWithRedirect } = useAuth0();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [showPass, setShowPass] = useState("password");
   const clickShowPass = () => {
     setShowPass(showPass === "password" ? "text" : "password");
@@ -21,54 +32,101 @@ export default function Login() {
     background: `url(${imgDog}) center no-repeat`,
     backgroundSize: "cover",
   };
+  const history = useHistory();
+  const onSubmit = async (data) => {
+    await loginApi
+      .login({ email: data.email, password: data.password })
+      .then((ok) => {
+        if (ok === "err") {
+          messageShowErr("Email hoặc mật khẩu không chính xác!");
+        } else {
+          messageShowSuccess(
+            `Chào mừng ${ok.lastName} đến với website của chúng tôi!`
+          );
+          localStorage.setItem("tokenPet", ok);
+          history.push("/");
+        }
+      });
+  };
   return (
     <div className="Login" style={style}>
       <div className="blur"></div>
       <div className="box-login">
-        <div className="title-login">Đăng nhập</div>
-        <div className="form-account">
-          <label htmlFor="">Tài khoản</label>
-          <div className="input">
-            <div className="icon">{userLogin}</div>
-            <input type="text" name="" id="" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="title-login">Đăng nhập</div>
+          <div className="form-account">
+            <label htmlFor="">Tài khoản</label>
+            <div className="input">
+              <div className="icon">{userLogin}</div>
+              <input
+                type="text"
+                {...register("email", {
+                  required: "Không được để trống!",
+                  pattern: {
+                    value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+                    message: "Không đúng định dạng email!",
+                  },
+                })}
+                id=""
+              />
+            </div>
+            {errors.email && (
+              <p className="text-danger">{errors.email.message}</p>
+            )}
           </div>
-        </div>
-        <div className="form-password">
-          <label htmlFor="">Mật khẩu</label>
-          <div className="input">
-            <div className="icon">{lockLogin}</div>
-            <input type={`${showPass}`} name="" id="" className="pass" />
-            <div className="icon-show" onClick={clickShowPass}>
-              {showPass === "password" ? eyeHidenLogin : eyeShowLogin}
+          <div className="form-password">
+            <label htmlFor="">Mật khẩu</label>
+            <div className="input">
+              <div className="icon">{lockLogin}</div>
+              <input
+                type={`${showPass}`}
+                {...register("password", {
+                  required: "Không được để trống!",
+                  minLength: {
+                    value: 6,
+                    message: "Mật khẩu ít nhất 6 ký tự!",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Mật khẩu quá dài!",
+                  },
+                })}
+                id=""
+                className="pass"
+              />
+              <div className="icon-show" onClick={clickShowPass}>
+                {showPass === "password" ? eyeHidenLogin : eyeShowLogin}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="forgot">
-          <span>Quên mật khẩu?</span>
-        </div>
-        <div className="btn-login">
-          <button>
-            <Link to="/">Đăng nhập</Link>
-          </button>
-        </div>
-        <div className="login-other">
-          <div className="text">Hoặc đăng nhập với</div>
-          <div className="icon-login">
-            <div className="icon" style={{ backgroundColor: "#087ceb" }}>
-              {facebook}
-            </div>
-            <div className="icon" style={{ backgroundColor: "#1da1f3" }}>
-              {twitter}
-            </div>
-            <div className="icon" style={{ backgroundColor: "#ea4235" }}>
-              {google}
+          {errors.password && (
+            <p className="text-danger">{errors.password.message}</p>
+          )}
+          <div className="forgot">
+            <span>Quên mật khẩu?</span>
+          </div>
+          <div className="btn-login">
+            <button style={{ color: "white" }}>Đăng nhập</button>
+          </div>
+          <div className="login-other">
+            <div className="text">Hoặc đăng nhập với</div>
+            <div className="icon-login">
+              <div className="icon" style={{ backgroundColor: "#087ceb" }}>
+                {facebook}
+              </div>
+              <div className="icon" style={{ backgroundColor: "#1da1f3" }}>
+                {twitter}
+              </div>
+              <div className="icon" style={{ backgroundColor: "#ea4235" }}>
+                {google}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="register">
-          <Link to="/Register">Đăng ký</Link>
-          <span> nếu bạn chưa có tài khoản</span>
-        </div>
+          <div className="register">
+            <Link to="/Register">Đăng ký</Link>
+            <span> nếu bạn chưa có tài khoản</span>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -109,3 +109,19 @@ p.text-danger {
   color: $colorOrange;
   margin-bottom: 0.3rem;
 }
+.colorOrange {
+  color: $colorOrange;
+}
+body {
+  &::-webkit-scrollbar {
+    width: 9px;
+    box-shadow: $boxShadow;
+    background-color: transparent;
+    padding-right: 0.1rem !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $colorOrange;
+  }
+}

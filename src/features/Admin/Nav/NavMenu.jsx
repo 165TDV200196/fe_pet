@@ -2,7 +2,15 @@ import React, { useEffect, useRef } from "react";
 import { Link, useRouteMatch, useLocation } from "react-router-dom";
 import img1 from "../../../images/pet6.jpg";
 import "../../../sass/Admin/Nav.scss";
-import { app, bell, logoAdmin, news } from "../svg/IconSvg";
+import {
+  app,
+  bell,
+  gallegy,
+  logoAdmin,
+  news,
+  service,
+  tag,
+} from "../svg/IconSvg";
 import { clickActive } from "./NavJs";
 export default function NavMenu() {
   const ulEL = useRef(null);
@@ -59,8 +67,20 @@ export default function NavMenu() {
           </li>
           <li>
             <Link to={`${path}/Tag`} id="Tag">
-              <div className="icon">{news}</div>
+              <div className="icon">{tag}</div>
               <div className="text">Tag</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Service`} id="Service">
+              <div className="icon">{service}</div>
+              <div className="text">Dịch vụ</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Gallery`} id="Gallery">
+              <div className="icon">{gallegy}</div>
+              <div className="text">Thư viện ảnh</div>
             </Link>
           </li>
         </ul>

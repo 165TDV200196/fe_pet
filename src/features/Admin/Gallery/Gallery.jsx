@@ -1,29 +1,26 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { Pagination } from "@material-ui/lab";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Link, useRouteMatch } from "react-router-dom";
-import newApi from "../../../api/newApi";
+import GalleryApi from "../../../api/galleryApi";
 import { countPagination, formatDate } from "../../../function";
 import Spinner from "../Spin/Spinner";
-import { useHistory } from "react-router";
-import { statusOff, statusOn, add } from "../svg/IconSvg";
+import { add, statusOff, statusOn } from "../svg/IconSvg";
 import Table from "../Table/Table";
-import { Pagination } from "@material-ui/lab";
-export default function New() {
+export default function Gallery() {
   const { url } = useRouteMatch();
   const titleTable = [
-    { title: "Tên tin tức", name: "name" },
+    { title: "Tên ảnh", name: "name" },
     { title: "Ảnh", name: "img" },
-    { title: "Người đăng", name: "author" },
     { title: "Thời gian", name: "time" },
     { title: "action", name: "action" },
   ];
 
   const [data, setdata] = useState(null);
-  const [load, setLoad] = useState(false);
   const [page, setPage] = useState(1);
+  const [load, setLoad] = useState(false);
   useEffect(() => {
-    newApi
-      .getAll({ page: page })
+    GalleryApi.getAll({ page: page })
       .then((ok) => {
         setdata(ok.data);
       })
@@ -31,21 +28,20 @@ export default function New() {
         console.log(err);
       });
   }, [load, page]);
-  console.log(data);
   const history = useHistory();
   const onchangeEdit = (e) => {
-    history.push(`${url}/AddNew/${e}`);
+    history.push(`${url}/AddGallery/${e}`);
   };
   const onchangeDelete = async (e) => {
-    await newApi.deletenew(e);
+    await GalleryApi.deleteGallery(e);
     setLoad(!load);
   };
   const onchangeStatus = (e, id) => {
     setdata(null);
     if (e === 0) {
-      newApi.editnew({ status: 1, id: id });
+      GalleryApi.editGallery({ status: 1, id: id });
     } else {
-      newApi.editnew({ status: 0, id: id });
+      GalleryApi.editGallery({ status: 0, id: id });
     }
     setTimeout(() => {
       setLoad(!load);
@@ -55,15 +51,15 @@ export default function New() {
     <div className="AdminTable">
       <div className="heading">
         <div className="heading__title">
-          <h3>Tin tức</h3>
+          <h3>Thư viện ảnh</h3>
         </div>
         <div className="heading__hr"></div>
       </div>
       <div className="add-admin">
         <button>
-          <Link to={`${url}/AddNew`}>
+          <Link to={`${url}/AddGallery`}>
             <div className="icon">{add}</div>
-            <div className="text">Thêm tin tức</div>
+            <div className="text">Thêm ảnh</div>
           </Link>
         </button>
       </div>
@@ -78,10 +74,9 @@ export default function New() {
               name: ok.name,
               img: (
                 <div className="img-table">
-                  <img src={ok.avatar} />
+                  <img src={ok.link} />
                 </div>
               ),
-              author: `${ok.User.firstName} ${ok.User.lastName}`,
               time: formatDate(ok.createdAt),
               action:
                 ok.status !== 0 ? (

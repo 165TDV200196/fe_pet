@@ -1,16 +1,14 @@
 import { Container } from "@material-ui/core";
-import React from "react";
-import img1 from "../../../images/pet1.jpg";
-import img2 from "../../../images/pet2.jpg";
-import img3 from "../../../images/pet3.jpg";
-import img4 from "../../../images/pet4.jpg";
-import img5 from "../../../images/pet5.jpg";
-import img6 from "../../../images/pet6.jpg";
-import img7 from "../../../images/pet7.jpg";
-import img8 from "../../../images/pet8.jpg";
-import img9 from "../../../images/pet9.jpg";
+import React, { useEffect, useState } from "react";
+import galleryApi from "../../../api/galleryApi";
 import "../../../sass/Home/Gallery.scss";
 export default function Gallery() {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    galleryApi.getGalleryHome({ limit: 9 }).then((ok) => {
+      setData(ok.data);
+    });
+  }, []);
   return (
     <div className="Gallery">
       <div className="heading">
@@ -21,33 +19,11 @@ export default function Gallery() {
       </div>
       <Container maxWidth="lg">
         <div className="post-grid">
-          <div className="grid-item">
-            <img src={img1} alt="" />
-          </div>
-          <div className="grid-item">
-            <img src={img2} alt="" />
-          </div>
-          <div className="grid-item">
-            <img src={img3} alt="" />
-          </div>
-          <div className="grid-item">
-            <img src={img4} alt="" />
-          </div>
-          <div className="grid-item">
-            <img src={img5} alt="" />
-          </div>
-          <div className="grid-item ">
-            <img src={img9} alt="" />
-          </div>
-          <div className="grid-item ">
-            <img src={img7} alt="" />
-          </div>
-          <div className="grid-item ">
-            <img src={img8} alt="" />
-          </div>
-          <div className="grid-item ">
-            <img src={img6} alt="" />
-          </div>
+          {data?.map((ok) => (
+            <div className="grid-item">
+              <img src={ok.link} alt="" />
+            </div>
+          ))}
         </div>
       </Container>
     </div>

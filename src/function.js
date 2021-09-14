@@ -53,3 +53,9 @@ export const messageShowSuccess = (e) => {
     onClick: function () {}, // Callback after click
   }).showToast();
 };
+export const getName = (e) => {
+  let index = e.lastIndexOf(" ");
+  var firtName = e.slice(0, index);
+  var lastName = e.slice(index + 1);
+  return { firtsName: firtName, lastName: lastName };
+};

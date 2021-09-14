@@ -1,15 +1,14 @@
 import { messageShowErr, messageShowSuccess } from "../function";
 import axiosClient from "./axiosClient";
-
 class UserApi {
   getAll = (params) => {
     const url = "/users";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
-    const url = `/users/${params}`;
+  checkUser = (params) => {
+    const url = `/users/checkUser`;
     return axiosClient.get(url).then((data) => {
-      return data.data;
+      return data.data.user;
     });
   };
   postuser = (params) => {

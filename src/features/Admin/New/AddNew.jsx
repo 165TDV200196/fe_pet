@@ -40,7 +40,6 @@ export default function AddNew() {
     if (id) {
       newApi.getOne(id).then((ok) => {
         reset(ok);
-        console.log(ok);
         setState({
           ...state,
           tagDefault: ok.Tags,
