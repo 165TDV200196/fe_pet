@@ -1,8 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import "../../sass/Login/Login.scss";
-import imgDog from "../../images/login.png";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
+import loginApi from "../../api/loginApi";
+import { messageShowErr, messageShowSuccess } from "../../function";
+import imgDog from "../../images/login.png";
+import "../../sass/Login/Login.scss";
 import {
   eyeHidenLogin,
   eyeShowLogin,
@@ -12,13 +14,7 @@ import {
   twitter,
   userLogin,
 } from "../Admin/svg/IconSvg";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useForm } from "react-hook-form";
-import userApi from "../../api/userApi";
-import { messageShowErr, messageShowSuccess } from "../../function";
-import loginApi from "../../api/loginApi";
 export default function Login() {
-  // const { loginWithRedirect } = useAuth0();
   const {
     register,
     handleSubmit,

@@ -1,6 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  let $ = document.querySelector.bind(document);
-  let Menu = $(".Menu");
+export const menuJs = (MenuEl, MenuHidentEl, MenuBarEl) => {
+  let Menu = MenuEl;
   document.addEventListener("scroll", () => {
     if (window.pageYOffset >= 16) {
       Menu.classList.add("menu-scroll");
@@ -8,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
       Menu.classList.remove("menu-scroll");
     }
   });
-  let menuHide = $("#menu-hide");
-  let menuBar = $(".menu-bar");
+  let menuHide = MenuHidentEl;
+  let menuBar = MenuBarEl;
   let indexShowMenu = "khong";
 
   const resizeMenu = (n) => {
@@ -37,4 +36,4 @@ document.addEventListener("DOMContentLoaded", () => {
     var widthScreen = window.innerWidth;
     resizeMenu(widthScreen);
   });
-});
+};

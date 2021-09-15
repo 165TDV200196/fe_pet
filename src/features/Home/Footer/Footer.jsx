@@ -1,9 +1,21 @@
 import { Container, Grid } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import renderHTML from "react-render-html";
 import { Link } from "react-router-dom";
+import contactApi from "../../../api/contactApi";
+import socialNetworkApi from "../../../api/socialNetworkApi";
 import "../../../sass/Home/Footer.scss";
-import { facebook, google, twitter } from "../../Admin/svg/IconSvg";
 export default function Footer() {
+  const [contact, setContact] = useState(null);
+  const [socialNetwork, setSocialNetwork] = useState(null);
+  useEffect(() => {
+    contactApi.getAll({ status: 1 }).then((ok) => {
+      setContact(ok.data.rows);
+    });
+    socialNetworkApi.getAll({ status: 1 }).then((ok) => {
+      setSocialNetwork(ok.data.rows);
+    });
+  }, []);
   return (
     <div className="Footer">
       <Container>
@@ -12,8 +24,7 @@ export default function Footer() {
             <div className="item-title">Giới thiệu</div>
             <div className="hr"></div>
             <div className="item-content about">
-              Công ty chúng tôi là côn gty số một việt nam về khoản chăm sóc các
-              chú cún của bạn.
+              {!contact ? "" : contact[0]?.description}
             </div>
           </Grid>
           <Grid item lg={3} md={6} sm={12} className="footer-item">
@@ -21,14 +32,14 @@ export default function Footer() {
             <div className="hr"></div>
             <div className="item-content">
               <div className="address">
-                Địa chỉ: <span>Thành phố Vinh, Nghệ An</span>
+                Địa chỉ: <span>{!contact ? "" : contact[0]?.address}</span>
               </div>
               <div className="contact">
                 <div className="phone">
-                  Điện thoại: <span>0984742831</span>
+                  Điện thoại: <span>{!contact ? "" : contact[0]?.phone}</span>
                 </div>
                 <div className="email">
-                  Email: <span>thienha@gmail.com</span>
+                  Email: <span>{!contact ? "" : contact[0]?.email}</span>
                 </div>
               </div>
             </div>
@@ -150,15 +161,11 @@ export default function Footer() {
             <div className="item-title">Mạng xã hội</div>
             <div className="hr"></div>
             <div className="item-content">
-              <div className="icon" style={{ backgroundColor: "#087ceb" }}>
-                {facebook}
-              </div>
-              <div className="icon" style={{ backgroundColor: "#1da1f3" }}>
-                {twitter}
-              </div>
-              <div className="icon" style={{ backgroundColor: "#ea4235" }}>
-                {google}
-              </div>
+              {socialNetwork?.map((ok) => (
+                <div className="icon" style={{ background: ok.color }}>
+                  {renderHTML(ok.icon)}
+                </div>
+              ))}
             </div>
           </Grid>
         </Grid>

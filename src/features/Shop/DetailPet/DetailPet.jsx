@@ -1,17 +1,15 @@
-import { Container, Grid } from "@material-ui/core";
-import React, { useEffect } from "react";
-import Banner from "../../Banner/Banner";
-import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
-import Footer from "../../Home/Footer/Footer";
-import img1 from "../../../images/pet-colum.jpg";
+import { Grid } from "@material-ui/core";
+import React, { useEffect, useRef } from "react";
 import img2 from "../../../images/pet-colum2.jpg";
 import img3 from "../../../images/pet3.jpg";
 import img4 from "../../../images/pet4.jpg";
 import img5 from "../../../images/pet5.jpg";
 import "../../../sass/Shop/DetailPet.scss";
-import "./DetailPetJs";
+import Banner from "../../Banner/Banner";
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
+import Footer from "../../Home/Footer/Footer";
 import Related from "../Related/Related";
-import { useRef } from "react";
+import "./DetailPetJs";
 import { ClickImg } from "./DetailPetJs";
 export default function DetailPet() {
   const listBread = [

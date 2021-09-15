@@ -1,15 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { Link, useRouteMatch, useLocation } from "react-router-dom";
+import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import img1 from "../../../images/pet6.jpg";
 import "../../../sass/Admin/Nav.scss";
 import {
   app,
-  bell,
+  contact,
   gallegy,
   logoAdmin,
   news,
   service,
   tag,
+  twitter,
+  weight,
 } from "../svg/IconSvg";
 import { clickActive } from "./NavJs";
 export default function NavMenu() {
@@ -81,6 +83,24 @@ export default function NavMenu() {
             <Link to={`${path}/Gallery`} id="Gallery">
               <div className="icon">{gallegy}</div>
               <div className="text">Thư viện ảnh</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Weight`} id="Weight">
+              <div className="icon">{weight}</div>
+              <div className="text">Cân nặng</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Contact`} id="Contact">
+              <div className="icon">{contact}</div>
+              <div className="text">Liên hệ</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/SocialNetwork`} id="SocialNetwork">
+              <div className="icon">{twitter}</div>
+              <div className="text">Mạng xã hội</div>
             </Link>
           </li>
         </ul>

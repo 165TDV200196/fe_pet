@@ -1,20 +1,16 @@
-import React, { useRef } from "react";
-import { useState } from "react";
-import "../../sass/Login/Login.scss";
-import imgDog from "../../images/login.png";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useHistory } from "react-router-dom";
 import userApi from "../../api/userApi";
 import { getName, messageShowErr, messageShowSuccess } from "../../function";
+import imgDog from "../../images/login.png";
+import "../../sass/Login/Login.scss";
 import {
   eyeHidenLogin,
-  userLogin,
   eyeShowLogin,
   lockLogin,
-  facebook,
-  twitter,
-  google,
   nameLogin,
+  userLogin,
 } from "../Admin/svg/IconSvg";
 export default function Register() {
   const [showPass, setShowPass] = useState("password");

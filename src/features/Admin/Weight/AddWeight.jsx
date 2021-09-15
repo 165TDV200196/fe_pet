@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router";
-import tagApi from "../../../api/tagApi";
+import WeightApi from "../../../api/weightApi";
 import Spinner from "../Spin/Spinner";
 
-export default function AddTag() {
+export default function AddWeight() {
   const { id } = useParams();
   const [state, setState] = useState({
     loadSpin: false,
@@ -18,7 +18,7 @@ export default function AddTag() {
   } = useForm();
   useEffect(() => {
     if (id) {
-      tagApi.getOne(id).then((ok) => {
+      WeightApi.getOne(id).then((ok) => {
         reset(ok);
       });
     }
@@ -27,42 +27,42 @@ export default function AddTag() {
   const onSubmit = async (data) => {
     setState({ ...state, loadSpin: true });
     if (id) {
-      await tagApi.edittag({
-        name: data.name,
+      await WeightApi.editWeight({
+        weight: data.weight,
         id: id,
       });
     } else {
-      await tagApi.posttag({
-        name: data.name,
+      await WeightApi.postWeight({
+        weight: data.weight,
         status: 0,
       });
     }
-    history.push("/Admin/Tag");
+    history.push("/Admin/Weight");
   };
   return (
     <div className="CreateAdmin">
       <div className="heading">
         <div className="heading__title">
-          <h3>Thêm tag</h3>
+          <h3>Thêm cân nặng</h3>
         </div>
         <div className="heading__hr"></div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-admin">
-          <label htmlFor="">Tên tag</label>
+          <label htmlFor="">Cân nặng</label>
           <input
             type="text"
-            {...register("name", { required: "Không được bỏ trống!" })}
+            {...register("weight", { required: "Không được bỏ trống" })}
           />
-          {errors.name && (
-            <span className="text-danger">{errors.name.message}</span>
+          {errors.weight && (
+            <span className="text-danger">{errors.weight.message}</span>
           )}
         </div>
         <div className="btn_submit">
           {loadSpin ? (
             <Spinner />
           ) : id ? (
-            <input type="submit" value="Sửa tag" />
+            <input type="submit" value="Sửa cân nặng" />
           ) : (
             <input type="submit" value="Thêm mới" />
           )}

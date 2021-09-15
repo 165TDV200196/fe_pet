@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import userApi from "../../../api/userApi";
 import "../../../sass/Home/Menu.scss";
 import { iconLogin, iconLogout, userHome } from "../../Admin/svg/IconSvg";
-// import "./menu";
+import { menuJs } from "./menu";
 
 export default function Menu() {
   const [openSelect, setOpenSelect] = useState("hident");
   const [initSelect, setinitSelect] = useState("none");
   const [load, setLoad] = useState(true);
   const [user, setUser] = useState(null);
+  const MenuEl = useRef(null);
+  const MenuHidentEl = useRef(null);
+  const MenuBarEl = useRef(null);
   const ClickAvatar = () => {
     setinitSelect("flex");
     setOpenSelect(openSelect === "hident" ? "" : "hident");
@@ -19,18 +22,19 @@ export default function Menu() {
     userApi.checkUser().then((ok) => {
       setUser(ok);
     });
+    menuJs(MenuEl.current, MenuHidentEl.current, MenuBarEl.current);
   }, [load]);
   console.log(load, user);
   const avatarDefault =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWalCQZajCWwnxKEE86RcbGh2i1XxEQ9Jkxt6ijNjm1CrvdnYilpInfHHVeriUng58IBo&usqp=CAU";
   return (
-    <div className="Menu">
+    <div className="Menu" ref={MenuEl}>
       <div className="menu-logo">
         <div className="logo">
           <Link to="/">my pet</Link>
         </div>
       </div>
-      <div className="menu-bar">
+      <div className="menu-bar" ref={MenuBarEl}>
         <div className="icon-bar">
           <svg
             aria-hidden="true"
@@ -50,7 +54,7 @@ export default function Menu() {
           </svg>
         </div>
       </div>
-      <div id="menu-hide" style={{ display: "flex" }}>
+      <div id="menu-hide" ref={MenuHidentEl} style={{ display: "flex" }}>
         <div className="menu-item">
           <div className="list-item">
             <ul>

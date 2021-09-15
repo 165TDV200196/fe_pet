@@ -1,14 +1,20 @@
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
+import AddContact from "../Contact/AddContact";
+import Contact from "../Contact/Contact";
 import AddGallery from "../Gallery/AddGallery";
 import Gallery from "../Gallery/Gallery";
 import AddNew from "../New/AddNew";
 import New from "../New/New";
 import AddService from "../Service/AddService";
 import Service from "../Service/Service";
+import AddSocialNetwork from "../SocialNetwork/AddSocialNetwork";
+import SocialNetwork from "../SocialNetwork/SocialNetwork";
 import Statistical from "../Statistical/Statistical";
 import AddTag from "../Tag/AddTag";
 import Tag from "../Tag/Tag";
+import AddWeight from "../Weight/AddWeight";
+import Weight from "../Weight/Weight";
 
 export default function NavContent() {
   const { path } = useRouteMatch();
@@ -43,6 +49,35 @@ export default function NavContent() {
           exact
           path={`${path}/Gallery/AddGallery/:id`}
           component={AddGallery}
+        />
+        <Route exact path={`${path}/Weight`} component={Weight} />
+        <Route exact path={`${path}/Weight/AddWeight`} component={AddWeight} />
+        <Route
+          exact
+          path={`${path}/Weight/AddWeight/:id`}
+          component={AddWeight}
+        />
+        <Route exact path={`${path}/Contact`} component={Contact} />
+        <Route
+          exact
+          path={`${path}/Contact/AddContact`}
+          component={AddContact}
+        />
+        <Route
+          exact
+          path={`${path}/Contact/AddContact/:id`}
+          component={AddContact}
+        />
+        <Route exact path={`${path}/SocialNetwork`} component={SocialNetwork} />
+        <Route
+          exact
+          path={`${path}/SocialNetwork/AddSocialNetwork`}
+          component={AddSocialNetwork}
+        />
+        <Route
+          exact
+          path={`${path}/SocialNetwork/AddSocialNetwork/:id`}
+          component={AddSocialNetwork}
         />
       </Switch>
     </div>
