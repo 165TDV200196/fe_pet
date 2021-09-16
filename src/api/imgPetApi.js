@@ -1,28 +1,30 @@
 import { messageShowErr, messageShowSuccess } from "../function";
 import axiosClient from "./axiosClient";
-class UserApi {
+
+class ImgPetApi {
   getAll = (params) => {
-    const url = "/users";
+    const url = "/imgPets";
     return axiosClient.get(url, { params });
   };
-  checkUser = (params) => {
-    const url = `/users/checkUser`;
-    return axiosClient.get(url).then((data) => {
-      return data.data.user;
-    });
-  };
   getOne = (params) => {
-    const url = `/users/${params}`;
+    const url = `/imgPets/${params}`;
     return axiosClient.get(url).then((data) => {
       return data.data;
     });
   };
-  postuser = (params) => {
-    const url = "/users";
-    return axiosClient.post(url, params);
+  postimgPet = (params) => {
+    const url = "/imgPets";
+    return axiosClient
+      .post(url, params)
+      .then((data) => {
+        messageShowSuccess("Thêm mới thành công!");
+      })
+      .catch((err) => {
+        messageShowErr("Có lỗi xảy ra!");
+      });
   };
-  deleteuser = (id) => {
-    const url = `/users/${id}`;
+  deleteimgPet = (id) => {
+    const url = `/imgPets/${id}`;
     return axiosClient
       .delete(url)
       .then((data) => {
@@ -32,17 +34,17 @@ class UserApi {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
-  edituser = (params) => {
-    const url = `/users/${params.id}`;
+  editimgPet = (params) => {
+    const url = `/imgPets/${params.id}`;
     return axiosClient
       .patch(url, params)
       .then((data) => {
-        messageShowSuccess("Sửa thông tin thành công!");
+        messageShowSuccess("Sửa thành công!");
       })
       .catch((err) => {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
 }
-const userApi = new UserApi();
-export default userApi;
+const imgPetApi = new ImgPetApi();
+export default imgPetApi;

@@ -89,7 +89,6 @@ export default function DetailPet() {
         </Grid>
         <Related />
       </div>
-      <Footer />
     </div>
   );
 }

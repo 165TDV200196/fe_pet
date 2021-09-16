@@ -155,7 +155,6 @@ export default function DetailNew() {
           </Grid>
         </Grid>
       </Container>
-      <Footer />
     </div>
   );
 }

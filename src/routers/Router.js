@@ -2,7 +2,9 @@ import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Nav from "../features/Admin/Nav/Nav";
 import Home from "../features/Home";
+import Footer from "../features/Home/Footer/Footer";
 import Menu from "../features/Home/Menu/Menu.jsx";
+import InforUser from "../features/InforUser/InforUser";
 import DetailNew from "../features/ListNews/DetailNew/DetailNew";
 import ListNews from "../features/ListNews/ListNews";
 import Login from "../features/Login/Login";
@@ -31,8 +33,10 @@ const Routers = (props) => {
         <Route path="/Shop/:id" component={DetailPet} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
+        <Route path="/InforUser/:id" component={InforUser} />
         <Route path="/Admin" component={Nav} />
       </Switch>
+      {pathName === "/login" || pathName.includes("Admin") ? "" : <Footer />}
     </div>
   );
 };

@@ -16,7 +16,6 @@ export default function Home() {
       <Comment />
       <Gallery />
       <News />
-      <Footer />
     </>
   );
 }

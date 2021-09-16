@@ -624,7 +624,46 @@ const contact = (
     ></path>
   </svg>
 );
+const search = (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fal"
+    data-icon="search"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    className="svg-inline--fa fa-search fa-w-16 fa-3x"
+  >
+    <path
+      fill="currentColor"
+      d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z"
+      className=""
+    ></path>
+  </svg>
+);
+const dog = (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fal"
+    data-icon="dog"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 576 512"
+    class="svg-inline--fa fa-dog fa-w-18 fa-3x"
+  >
+    <path
+      fill="currentColor"
+      d="M528,96H464l-7.16-14.31C452,71.92,439.13,64,428.22,64H358.59L331.31,36.72A15.57,15.57,0,0,0,320.13,32,16,16,0,0,0,304,48V224H192a95.53,95.53,0,0,0-52.94,16H112a48.05,48.05,0,0,1-48-48,16,16,0,0,0-32,0,79.94,79.94,0,0,0,77.47,79.73A95.08,95.08,0,0,0,96,320V480a32,32,0,0,0,32,32h64a32,32,0,0,0,32-32V384h96v96a32,32,0,0,0,32,32h64a32,32,0,0,0,32-32V240h32a64,64,0,0,0,64-64V112A16,16,0,0,0,528,96ZM416,480H352V352H192V480H128V320a64.07,64.07,0,0,1,64-64H310.06L416,282.48Zm96-304a32,32,0,0,1-32,32H416v41.52l-80-20V86.66L345.34,96h82.88l16,32H512Zm-96-48a16,16,0,1,1-16-16A16,16,0,0,1,416,128Z"
+      class=""
+    ></path>
+  </svg>
+);
 export {
+  dog,
+  search,
+  bar,
   contact,
   weight,
   gallegy,
@@ -652,7 +691,6 @@ export {
   news,
   bell,
   group,
-  bar,
   close,
   dot,
   trash,

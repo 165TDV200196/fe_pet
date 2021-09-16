@@ -36,9 +36,7 @@ export default function Login() {
         if (ok === "err") {
           messageShowErr("Email hoặc mật khẩu không chính xác!");
         } else {
-          messageShowSuccess(
-            `Chào mừng ${ok.lastName} đến với website của chúng tôi!`
-          );
+          messageShowSuccess(`Đăng nhập thành công!`);
           localStorage.setItem("tokenPet", ok);
           history.push("/");
         }

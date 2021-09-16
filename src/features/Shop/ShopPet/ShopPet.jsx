@@ -281,7 +281,6 @@ export default function ShopPet() {
           shape="rounded"
         />
       </Container>
-      <Footer />
     </div>
   );
 }

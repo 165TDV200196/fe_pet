@@ -59,3 +59,17 @@ export const getName = (e) => {
   var lastName = e.slice(index + 1);
   return { firtsName: firtName, lastName: lastName };
 };
+export const getMale = (e) => {
+  if (e == 1) {
+    return "Nam";
+  } else {
+    return "Nữ";
+  }
+};
+export const setMale = (e) => {
+  if (e === "Nam") {
+    return 1;
+  } else {
+    return 0;
+  }
+};

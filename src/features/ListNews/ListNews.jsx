@@ -58,7 +58,6 @@ export default function ListNews() {
           shape="rounded"
         />
       </Container>
-      <Footer />
     </div>
   );
 }
