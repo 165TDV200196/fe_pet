@@ -10,6 +10,7 @@ export default function Table({
   titleTable,
   onchangeEdit,
   onchangeDelete,
+  hidentDot,
 }) {
   const tableEl = useRef(null);
   useEffect(() => {
@@ -38,9 +39,14 @@ export default function Table({
             {arrTitle.map((oki, index1) => (
               <td>{ok[oki]}</td>
             ))}
-            <td>
-              <div className="action">{dot}</div>
-            </td>
+            {hidentDot ? (
+              ""
+            ) : (
+              <td>
+                <div className="action">{dot}</div>
+              </td>
+            )}
+
             <div className="action-content action-hident">
               <ul>
                 <li>

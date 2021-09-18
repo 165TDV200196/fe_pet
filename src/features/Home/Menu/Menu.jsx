@@ -11,11 +11,10 @@ import {
 } from "../../Admin/svg/IconSvg";
 import { menuJs } from "./menu";
 
-export default function Menu() {
+export default function Menu({ user, setUserMenu, loadUser }) {
   const [openSelect, setOpenSelect] = useState("hident");
   const [initSelect, setinitSelect] = useState("none");
   const [load, setLoad] = useState(true);
-  const [user, setUser] = useState(null);
   const MenuEl = useRef(null);
   const MenuHidentEl = useRef(null);
   const MenuBarEl = useRef(null);
@@ -25,15 +24,21 @@ export default function Menu() {
   };
   const selectEL = useRef("null");
   useEffect(() => {
-    userApi.checkUser().then((ok) => {
-      setUser(ok);
-    });
     menuJs(MenuEl.current, MenuHidentEl.current, MenuBarEl.current);
-  }, [load]);
+  }, []);
+  const hangdleLogout = () => {
+    setUserMenu(null);
+  };
   const avatarDefault =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWalCQZajCWwnxKEE86RcbGh2i1XxEQ9Jkxt6ijNjm1CrvdnYilpInfHHVeriUng58IBo&usqp=CAU";
   return (
-    <div className="Menu" ref={MenuEl}>
+    <div
+      className="Menu"
+      ref={MenuEl}
+      onLoad={() => {
+        loadUser();
+      }}
+    >
       <div className="menu-logo">
         <div className="logo">
           <Link to="/">my pet</Link>
@@ -89,7 +94,7 @@ export default function Menu() {
                   <Link
                     onClick={() => {
                       localStorage.removeItem("tokenPet");
-                      setUser(null);
+                      hangdleLogout();
                     }}
                   >
                     <div className="icon">{iconLogout}</div>

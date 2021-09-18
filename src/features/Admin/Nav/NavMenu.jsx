@@ -11,6 +11,7 @@ import {
   service,
   tag,
   twitter,
+  useCheck,
   weight,
 } from "../svg/IconSvg";
 import { clickActive } from "./NavJs";
@@ -59,6 +60,12 @@ export default function NavMenu() {
             <Link to={`${path}`} className="active" id="">
               <div className="icon">{app}</div>
               <div className="text">Thống kê</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/CheckPet`} id="CheckPet">
+              <div className="icon">{useCheck}</div>
+              <div className="text">Kiểm tra thú cưng</div>
             </Link>
           </li>
           <li>

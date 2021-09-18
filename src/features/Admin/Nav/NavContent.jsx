@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
+import CheckPetAdmin from "../CheckPetAdmin/CheckPetAdmin";
+import PetDetail from "../CheckPetAdmin/PetDetail";
 import AddContact from "../Contact/AddContact";
 import Contact from "../Contact/Contact";
 import AddGallery from "../Gallery/AddGallery";
@@ -22,6 +24,12 @@ export default function NavContent() {
     <div className="NavContent">
       <Switch>
         <Route exact path={`${path}`} component={Statistical} />
+        <Route exact path={`${path}/CheckPet`} component={CheckPetAdmin} />
+        <Route
+          exact
+          path={`${path}/CheckPet/PetDetail/:id`}
+          component={PetDetail}
+        />
         <Route exact path={`${path}/New`} component={New} />
         <Route exact path={`${path}/New/AddNew`} component={AddNew} />
         <Route exact path={`${path}/New/AddNew/:id`} component={AddNew} />

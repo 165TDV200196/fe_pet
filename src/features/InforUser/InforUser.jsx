@@ -3,11 +3,12 @@ import React, { useEffect, useRef } from "react";
 import Banner from "../Banner/Banner";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import "../../sass/Home/Tabs.scss";
-import { bar, dog, search, setting, userHome } from "../Admin/svg/IconSvg";
+import { bar, cat, dog, search, setting, userHome } from "../Admin/svg/IconSvg";
 import { tabJs } from "./tab";
 import Information from "./Panes/Information";
 import EditInformation from "./Panes/EditInformation";
 import CreatePet from "./Panes/CreatePet";
+import MyPet from "./Panes/MyPet";
 export default function InforUser() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Thông tin" }];
   const itemsEl = useRef(null);
@@ -35,12 +36,16 @@ export default function InforUser() {
               <div className="icon">{dog}</div>
               Đăng bán thú cưng
             </div>
+            <div class="tab-item ">
+              <div className="icon">{cat}</div> Thú cưng của tôi
+            </div>
             <div className="line" ref={lineEl}></div>
           </div>
           <div className="panes" ref={panesEl}>
             <Information />
             <EditInformation />
             <CreatePet />
+            <MyPet />
           </div>
         </div>
       </Container>

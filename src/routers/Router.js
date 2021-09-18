@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
+import userApi from "../api/userApi";
 import Nav from "../features/Admin/Nav/Nav";
 import Home from "../features/Home";
 import Footer from "../features/Home/Footer/Footer";
@@ -12,17 +13,30 @@ import Register from "../features/Register/Register";
 import DetailPet from "../features/Shop/DetailPet/DetailPet";
 import ShopPet from "../features/Shop/ShopPet/ShopPet";
 const Routers = (props) => {
-  const { location, match } = props;
+  const { location } = props;
   const pathName = location.pathname;
+  const [user, setUser] = useState(null);
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    userApi.checkUser().then((ok) => {
+      setUser(ok);
+    });
+  }, [load]);
+  const checkLoad = () => {
+    setLoad(!load);
+  };
+  const hangdleLogout = (e) => {
+    setUser(e);
+  };
   return (
     <div>
-      {/* <Switch>
-          <Route path="/Login" component={Menu} />
-          <Route path="/Admin" component={Menu} />
-          <Route path="/Register" component={Menu} />
-          <Route component={Menu} />
-        </Switch> */}
-      {pathName === "/login" || pathName.includes("Admin") ? "" : <Menu />}
+      {pathName === "/login" ||
+      pathName === "/Register" ||
+      pathName.includes("Admin") ? (
+        ""
+      ) : (
+        <Menu user={user} setUserMenu={hangdleLogout} loadUser={checkLoad} />
+      )}
       <Switch>
         <Route exact path="/">
           <Home />
@@ -33,10 +47,26 @@ const Routers = (props) => {
         <Route path="/Shop/:id" component={DetailPet} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
-        <Route path="/InforUser/:id" component={InforUser} />
-        <Route path="/Admin" component={Nav} />
+        <Route
+          path="/InforUser/:id"
+          render={() => {
+            return user ? <InforUser /> : <Login />;
+          }}
+        />
+        <Route
+          path="/Admin"
+          render={() => {
+            return user ? <Nav /> : <Login />;
+          }}
+        />
       </Switch>
-      {pathName === "/login" || pathName.includes("Admin") ? "" : <Footer />}
+      {pathName === "/login" ||
+      pathName === "/Register" ||
+      pathName.includes("Admin") ? (
+        ""
+      ) : (
+        <Footer />
+      )}
     </div>
   );
 };

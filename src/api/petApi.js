@@ -12,6 +12,18 @@ class PetApi {
       return data.data;
     });
   };
+  getCheckAdmin = (params) => {
+    const url = `/pets/checkPet`;
+    return axiosClient.get(url, { params }).then((data) => {
+      return data.data;
+    });
+  };
+  getPetUser = (params) => {
+    const url = `/pets/getPetUser/${params}`;
+    return axiosClient.get(url).then((data) => {
+      return data.data;
+    });
+  };
   postpet = (params) => {
     const url = "/pets";
     return axiosClient
@@ -36,14 +48,7 @@ class PetApi {
   };
   editpet = (params) => {
     const url = `/pets/${params.id}`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {
-        messageShowSuccess("Sửa thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    return axiosClient.patch(url, params);
   };
 }
 const petApi = new PetApi();

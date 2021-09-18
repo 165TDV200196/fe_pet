@@ -31,7 +31,6 @@ export default function New() {
         console.log(err);
       });
   }, [load, page]);
-  console.log(data);
   const history = useHistory();
   const onchangeEdit = (e) => {
     history.push(`${url}/AddNew/${e}`);

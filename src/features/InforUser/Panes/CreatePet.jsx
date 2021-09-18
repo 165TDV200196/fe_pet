@@ -16,7 +16,7 @@ export default function CreatePet() {
     imgIdPet: "",
     mutilImgPet: "",
     userId: "",
-    load: true,
+    load: false,
   });
   const {
     linkImgPet,
@@ -68,7 +68,7 @@ export default function CreatePet() {
       name: data.name,
       price: data.price,
       description: data.description,
-      textarea: data.textarea,
+      text: data.text,
       avatar: anh,
       userId: userId,
       imgpet,
