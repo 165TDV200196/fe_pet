@@ -1,5 +1,8 @@
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
+import AddCategory from "../Category/AddCategory";
+import Category from "../Category/Category";
+import category from "../Category/Category";
 import CheckPetAdmin from "../CheckPetAdmin/CheckPetAdmin";
 import PetDetail from "../CheckPetAdmin/PetDetail";
 import AddContact from "../Contact/AddContact";
@@ -8,6 +11,8 @@ import AddGallery from "../Gallery/AddGallery";
 import Gallery from "../Gallery/Gallery";
 import AddNew from "../New/AddNew";
 import New from "../New/New";
+import AddProduct from "../Product/AddProduct";
+import Product from "../Product/Product";
 import AddService from "../Service/AddService";
 import Service from "../Service/Service";
 import AddSocialNetwork from "../SocialNetwork/AddSocialNetwork";
@@ -36,6 +41,29 @@ export default function NavContent() {
         <Route exact path={`${path}/Tag`} component={Tag} />
         <Route exact path={`${path}/Tag/AddTag`} component={AddTag} />
         <Route exact path={`${path}/Tag/AddTag/:id`} component={AddTag} />
+        <Route exact path={`${path}/Category`} component={Category} />
+        <Route
+          exact
+          path={`${path}/Category/AddCategory`}
+          component={AddCategory}
+        />
+        <Route
+          exact
+          path={`${path}/Category/AddCategory/:id`}
+          component={AddCategory}
+        />
+        <Route exact path={`${path}/Product`} component={Product} />
+        <Route
+          exact
+          path={`${path}/Product/AddProduct`}
+          component={AddProduct}
+        />
+        <Route
+          exact
+          path={`${path}/Product/AddProduct/:id`}
+          component={AddProduct}
+        />
+
         <Route exact path={`${path}/Service`} component={Service} />
         <Route
           exact

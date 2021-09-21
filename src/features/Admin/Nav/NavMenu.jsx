@@ -4,10 +4,12 @@ import img1 from "../../../images/pet6.jpg";
 import "../../../sass/Admin/Nav.scss";
 import {
   app,
+  category,
   contact,
   gallegy,
   logoAdmin,
   news,
+  product,
   service,
   tag,
   twitter,
@@ -66,6 +68,18 @@ export default function NavMenu() {
             <Link to={`${path}/CheckPet`} id="CheckPet">
               <div className="icon">{useCheck}</div>
               <div className="text">Kiểm tra thú cưng</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Category`} id="Category">
+              <div className="icon">{category}</div>
+              <div className="text">Danh mục sản phẩm</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Product`} id="Product">
+              <div className="icon">{product}</div>
+              <div className="text">Sản phẩm</div>
             </Link>
           </li>
           <li>

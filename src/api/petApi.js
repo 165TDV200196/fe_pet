@@ -6,6 +6,10 @@ class PetApi {
     const url = "/pets";
     return axiosClient.get(url, { params });
   };
+  countTypePet = () => {
+    const url = "/pets/countTypePet";
+    return axiosClient.get(url);
+  };
   getOne = (params) => {
     const url = `/pets/${params}`;
     return axiosClient.get(url).then((data) => {

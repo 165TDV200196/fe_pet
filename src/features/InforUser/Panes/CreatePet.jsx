@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import JoditEditor from "jodit-react";
 import { useParams } from "react-router";
 import petApi from "../../../api/petApi";
 import userApi from "../../../api/userApi";
@@ -7,6 +8,7 @@ import { storage } from "../../../firebase";
 import { getMale, messageShowSuccess, setMale } from "../../../function";
 import { camera } from "../../Admin/svg/IconSvg";
 import Mutil from "../Multi/Mutil";
+import Select from "react-select";
 
 export default function CreatePet() {
   const [state, setState] = useState({
@@ -17,6 +19,7 @@ export default function CreatePet() {
     mutilImgPet: "",
     userId: "",
     load: false,
+    type: "",
   });
   const {
     linkImgPet,
@@ -25,6 +28,7 @@ export default function CreatePet() {
     imgPet,
     imgIdPet,
     userId,
+    type,
     load,
   } = state;
   const {
@@ -33,6 +37,7 @@ export default function CreatePet() {
     reset,
     formState: { errors },
   } = useForm();
+  const [text, setText] = useState(null);
   const hangdelimagePet = (e) => {
     setState({
       ...state,
@@ -46,7 +51,11 @@ export default function CreatePet() {
       setState({ ...state, userId: ok.id });
     });
   }, []);
-
+  const onchangeType = (e) => {
+    console.log(e);
+    setState({ ...state, type: e.value });
+  };
+  console.log(state);
   const onSubmit = async (data) => {
     setState({ ...state, load: !load });
     messageShowSuccess("Vui vòng đợi trong giây lát!");
@@ -68,8 +77,9 @@ export default function CreatePet() {
       name: data.name,
       price: data.price,
       description: data.description,
-      text: data.text,
+      text: text,
       avatar: anh,
+      type: type,
       userId: userId,
       imgpet,
       status: 0,
@@ -78,6 +88,11 @@ export default function CreatePet() {
   const hangdleMutilImg = (e) => {
     setState({ ...state, mutilImgPet: e });
   };
+  const dataType = [
+    { value: "chó", label: "chó" },
+    { value: "mèo", label: "mèo" },
+    { value: "khác", label: "khác" },
+  ];
   return (
     <div className="tab-pane">
       <div className="CreateAdmin">
@@ -165,18 +180,20 @@ export default function CreatePet() {
             )}
           </div>
           <div className="input-admin">
+            <label htmlFor="">Loại thú cưng</label>
+            <Select
+              closeMenuOnSelect={false}
+              onChange={onchangeType}
+              options={dataType}
+            />
+          </div>
+          <div className="input-admin">
             <label htmlFor="">Điểm nổi bật</label>
-            <textarea
-              rows="5"
-              {...register("text", {
-                required: "Không được bỏ trống!",
-                maxLength: { value: 500, message: "Vượt quá ký tự cho phép" },
-              })}
-            ></textarea>
-
-            {errors.text && (
-              <span className="text-danger">{errors.text.message}</span>
-            )}
+            <JoditEditor
+              value={text}
+              tabIndex={1}
+              onChange={(e) => setText(e)}
+            />
           </div>
           <div className="btn_submit">
             <input type="submit" disabled={load} value="Hoàn thành" />

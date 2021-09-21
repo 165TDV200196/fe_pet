@@ -1,5 +1,6 @@
 import { Grid, Tooltip } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import renderHTML from "react-render-html";
 import { useParams } from "react-router";
 import petApi from "../../../api/petApi";
 import { messageShowErr, messageShowSuccess } from "../../../function";
@@ -97,7 +98,7 @@ export default function MyPet() {
                     </div>
                     <div className="text-detail">
                       <div className="detail-content-title">Điểm nổi bật</div>
-                      {ok.text}
+                      {renderHTML(ok.text)}
                     </div>
                   </div>
                 </p>

@@ -1,19 +1,32 @@
 import { Container, Grid } from "@material-ui/core";
-import React, { useEffect } from "react";
+import { Pagination } from "@material-ui/lab";
+import React, { useEffect, useState } from "react";
+import { Link, useRouteMatch } from "react-router-dom";
+import categoryApi from "../../../api/CategoryApi";
+import petApi from "../../../api/petApi";
+import { countPagination } from "../../../function";
+import "../../../sass/Shop/ShopPet.scss";
 import Banner from "../../Banner/Banner";
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
-import Footer from "../../Home/Footer/Footer";
-import img1 from "../../../images/pet-colum.jpg";
-import img2 from "../../../images/pet-colum2.jpg";
-import "../../../sass/Shop/ShopPet.scss";
-import { Link, useRouteMatch } from "react-router-dom";
-import { Pagination } from "@material-ui/lab";
 export default function ShopPet() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Cửa hàng" }];
   const { path } = useRouteMatch();
+  const [category, setCategory] = useState(null);
+  const [page, setPage] = useState(null);
+  const [pet, setPet] = useState(null);
+  const [countPet, setCountPet] = useState(null);
   useEffect(() => {
+    categoryApi.getAll({ status: 1 }).then((ok) => {
+      setCategory(ok.data.rows);
+    });
+    petApi.getAll({ page: page, status: 1 }).then((ok) => {
+      setPet(ok.data);
+    });
+    petApi.countTypePet().then((ok) => {
+      setCountPet(ok);
+    });
     window.scrollTo(0, 0);
-  }, []);
+  }, [page]);
   return (
     <div className="Shop">
       <Banner />
@@ -53,229 +66,65 @@ export default function ShopPet() {
                 </div>
               </div>
               <div className="category">
-                <div className="title">Danh mục sản phẩm</div>
+                <div className="title">Thú cưng</div>
                 <div className="content">
                   <div className="item">
                     <div className="name">Chó</div>
-                    <div className="count">12</div>
+                    <div className="count">{countPet?.countDog}</div>
                   </div>
                   <div className="item">
                     <div className="name">Mèo</div>
-                    <div className="count">13</div>
+                    <div className="count">{countPet?.countCat}</div>
                   </div>
                   <div className="item">
                     <div className="name">Khác</div>
-                    <div className="count">1</div>
+                    <div className="count">{countPet?.countOther}</div>
                   </div>
                 </div>
               </div>
               <div className="grand">
-                <div className="title">Thương hiệu</div>
+                <div className="title">Danh mục sản phẩm</div>
                 <div className="content">
-                  <div className="item">hello</div>
-                  <div className="item">hello</div>
-                  <div className="item">hello</div>
+                  {category?.map((ok) => (
+                    <div className="item">{ok.name}</div>
+                  ))}
                 </div>
               </div>
             </div>
           </Grid>
           <Grid item lg={9} md={9} sm={9} xs={12}>
             <Grid container spacing={2}>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
+              {pet?.rows?.map((ok) => (
+                <Grid item lg={3} md={4} sm={6}>
+                  <div className="item-pet">
+                    <div className="img">
+                      <img src={ok.avatar} alt="" />
+                      <div className="add-cart">Thêm vào giỏ</div>
+                      <div className="blur"></div>
                     </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link to={`${path}/1`}>Chó shibaa</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
+                    <div className="name">
+                      <Link to={`${path}/${ok.id}`}>{ok.name}</Link>
                     </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
+                    <div className="price">
+                      {/* <div className="price1">
+                        <del>400.000</del>
+                      </div> */}
+                      <div className="price2">
+                        {parseInt(ok.price).toLocaleString()}
+                      </div>
+                      <div className="gia">VNĐ</div>
                     </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
                   </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item lg={3} md={4} sm={6}>
-                <div className="item-pet">
-                  <div className="img">
-                    <img src={img2} alt="" />
-                    <div className="add-cart">Thêm vào giỏ</div>
-                    <div className="blur"></div>
-                  </div>
-                  <div className="name">
-                    <Link>Chó shiba</Link>
-                  </div>
-                  <div className="price">
-                    <div className="price1">
-                      <del>400.000</del>
-                    </div>
-                    <div className="price2">500.000</div>{" "}
-                    <div className="gia">VNĐ</div>
-                  </div>
-                </div>
-              </Grid>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
         </Grid>
         <Pagination
-          count={5}
+          onChange={(e, i) => {
+            setPage(i);
+          }}
+          count={countPagination(pet?.count)}
           color="secondary"
           variant="outlined"
           shape="rounded"

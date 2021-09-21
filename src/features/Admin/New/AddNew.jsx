@@ -10,7 +10,7 @@ import Toastify from "toastify-js";
 import Select from "react-select";
 import Spinner from "../Spin/Spinner";
 import { camera } from "../svg/IconSvg";
-import { checkArrayEquar } from "../../../function";
+import { checkArrayEquar, messageShowErr } from "../../../function";
 import tagNewApi from "../../../api/tagNewApi";
 export default function AddNew() {
   const [state, setState] = useState({
@@ -43,6 +43,7 @@ export default function AddNew() {
         setState({
           ...state,
           tagDefault: ok.Tags,
+
           imgId: ok.avatar,
         });
         setContent(ok.content);
@@ -54,7 +55,7 @@ export default function AddNew() {
   const [content, setContent] = useState();
   const onSubmit = async (data) => {
     setState({ ...state, loadSpin: true });
-    if (data.samary.length < 1000 || img.length !== 0) {
+    if (img !== "" || imgId !== "") {
       if (id) {
         if (img !== "") {
           await storage.ref(`imagesNews/${img.name}`).put(img);
@@ -131,18 +132,7 @@ export default function AddNew() {
       }
       history.push("/Admin/New");
     } else {
-      Toastify({
-        text: "Phần tóm tắt không được vượt quá 1000 ký tự!",
-        duration: 3000,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
-        backgroundColor: "linear-gradient(to right, #ffd000, #ff8300)",
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        onClick: function () {}, // Callback after click
-      }).showToast();
+      messageShowErr("Chưa có ảnh!");
     }
   };
   const hangdelimage = (e) => {
@@ -170,7 +160,7 @@ export default function AddNew() {
   const formatTagDefault = (e) => {
     var arr = [];
     for (let i = 0; i < e.length; i++) {
-      arr.push(e.id);
+      arr.push(e[i].id);
     }
     return arr;
   };
@@ -231,7 +221,10 @@ export default function AddNew() {
           <textarea
             id=""
             rows="5"
-            {...register("samary", { required: true })}
+            {...register("samary", {
+              required: true,
+              maxLength: { value: 1000, message: "Vượt quá ký tự cho phép!" },
+            })}
           ></textarea>
           {errors.samary && (
             <span className="text-danger">Không được bỏ trống</span>

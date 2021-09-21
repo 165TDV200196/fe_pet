@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 import renderHtml from "react-render-html";
 import { facebook, google, twitter } from "../../Admin/svg/IconSvg";
 export default function DetailNew() {
+  const [data, setData] = useState(null);
   const listBread = [
     { name: "Trang chủ", link: "/" },
     { name: "Tin tức", link: "/ListNews" },
-    { name: "Tên tin tức" },
+    { name: data?.name },
   ];
   const { id } = useParams();
-  const [data, setData] = useState(null);
   useEffect(() => {
     window.scrollTo(0, 0);
     newApi
@@ -30,7 +30,6 @@ export default function DetailNew() {
         console.log(err);
       });
   }, []);
-  console.log(data);
   return (
     <div className="DetailNew">
       <Banner />
