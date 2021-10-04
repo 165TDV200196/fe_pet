@@ -1,16 +1,14 @@
 import { Container, Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import Banner from "../../Banner/Banner";
-import { useParams } from "react-router-dom";
-import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
-import img1 from "../../../images/pet4.jpg";
-import img2 from "../../../images/1227.gif";
-import "../../../sass/ListNews/New.scss";
-import Footer from "../../Home/Footer/Footer";
-import newApi from "../../../api/newApi";
-import { Link } from "react-router-dom";
 import renderHtml from "react-render-html";
+import { Link, useParams } from "react-router-dom";
+import newApi from "../../../api/newApi";
+import img2 from "../../../images/1227.gif";
+import img1 from "../../../images/pet4.jpg";
+import "../../../sass/ListNews/New.scss";
 import { facebook, google, twitter } from "../../Admin/svg/IconSvg";
+import Banner from "../../Banner/Banner";
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 export default function DetailNew() {
   const [data, setData] = useState(null);
   const listBread = [

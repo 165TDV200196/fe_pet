@@ -89,8 +89,6 @@ export default function AddProduct() {
   };
   const history = useHistory();
   const onSubmit = async (data) => {
-    console.log(formatTagDefault(tagDefault), tagId);
-    console.log(checkArrayEquar(formatTagDefault(tagDefault), tagId));
     if (text !== null) {
       setState({ ...state, loadSpin: true });
       if (id) {

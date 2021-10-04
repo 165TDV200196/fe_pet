@@ -2,16 +2,15 @@ import JoditEditor from "jodit-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router";
+import Select from "react-select";
 import newApi from "../../../api/newApi";
 import tagApi from "../../../api/tagApi";
+import tagNewApi from "../../../api/tagNewApi";
 import { storage } from "../../../firebase";
+import { checkArrayEquar, messageShowErr } from "../../../function";
 import "../../../sass/Admin/PublicAdmin.scss";
-import Toastify from "toastify-js";
-import Select from "react-select";
 import Spinner from "../Spin/Spinner";
 import { camera } from "../svg/IconSvg";
-import { checkArrayEquar, messageShowErr } from "../../../function";
-import tagNewApi from "../../../api/tagNewApi";
 export default function AddNew() {
   const [state, setState] = useState({
     linkImg: "",

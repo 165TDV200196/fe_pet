@@ -17,8 +17,9 @@ const Routers = (props) => {
   const pathName = location.pathname;
   const [user, setUser] = useState(null);
   const [load, setLoad] = useState(false);
-  useEffect(() => {
-    userApi.checkUser().then((ok) => {
+  
+  useEffect(async() => {
+    await userApi.checkUser().then((ok) => {
       setUser(ok);
     });
   }, [load]);
@@ -44,7 +45,7 @@ const Routers = (props) => {
         <Route exact path="/ListNews" component={ListNews} />
         <Route exact path="/Shop" component={ShopPet} />
         <Route path="/ListNews/:id" component={DetailNew} />
-        <Route path="/Shop/:id" component={DetailPet} />
+        <Route path="/Shop/:type/:id" component={DetailPet} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
         <Route

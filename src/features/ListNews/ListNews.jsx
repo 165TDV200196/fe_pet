@@ -7,7 +7,6 @@ import { countPagination } from "../../function";
 import "../../sass/ListNews/ListNews.scss";
 import Banner from "../Banner/Banner";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import Footer from "../Home/Footer/Footer";
 
 export default function ListNews() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Tin tức" }];

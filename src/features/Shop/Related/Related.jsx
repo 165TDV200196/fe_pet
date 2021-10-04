@@ -1,8 +1,8 @@
-import { Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import React from "react";
-import "../../../sass/Shop/Related.scss";
-import img2 from "../../../images/pet4.jpg";
 import { Link } from "react-router-dom";
+import img2 from "../../../images/pet4.jpg";
+import "../../../sass/Shop/Related.scss";
 export default function Related() {
   return (
     <div className="Related">

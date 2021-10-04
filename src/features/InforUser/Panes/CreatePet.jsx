@@ -1,14 +1,13 @@
+import JoditEditor from "jodit-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import JoditEditor from "jodit-react";
-import { useParams } from "react-router";
+import Select from "react-select";
 import petApi from "../../../api/petApi";
 import userApi from "../../../api/userApi";
 import { storage } from "../../../firebase";
-import { getMale, messageShowSuccess, setMale } from "../../../function";
+import { messageShowSuccess } from "../../../function";
 import { camera } from "../../Admin/svg/IconSvg";
 import Mutil from "../Multi/Mutil";
-import Select from "react-select";
 
 export default function CreatePet() {
   const [state, setState] = useState({

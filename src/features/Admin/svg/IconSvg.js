@@ -1,4 +1,4 @@
-const logoAdmin = (
+export const logoAdmin = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <defs>
       <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">
@@ -30,7 +30,7 @@ const logoAdmin = (
     </g>
   </svg>
 );
-const app = (
+export const app = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -48,7 +48,7 @@ const app = (
     ></path>
   </svg>
 );
-const news = (
+export const news = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -66,7 +66,7 @@ const news = (
     ></path>
   </svg>
 );
-const bell = (
+export const bell = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -84,7 +84,7 @@ const bell = (
     ></path>
   </svg>
 );
-const group = (
+export const group = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -102,7 +102,7 @@ const group = (
     ></path>
   </svg>
 );
-const bar = (
+export const bar = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -120,7 +120,7 @@ const bar = (
     ></path>
   </svg>
 );
-const close = (
+export const close = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -138,7 +138,7 @@ const close = (
     ></path>
   </svg>
 );
-const dot = (
+export const dot = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -156,7 +156,7 @@ const dot = (
     ></path>
   </svg>
 );
-const trash = (
+export const trash = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -174,7 +174,7 @@ const trash = (
     ></path>
   </svg>
 );
-const edit = (
+export const edit = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -192,7 +192,7 @@ const edit = (
     ></path>
   </svg>
 );
-const statusOff = (
+export const statusOff = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -210,7 +210,7 @@ const statusOff = (
     ></path>
   </svg>
 );
-const statusOn = (
+export const statusOn = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -228,7 +228,7 @@ const statusOn = (
     ></path>
   </svg>
 );
-const home = (
+export const home = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -246,7 +246,7 @@ const home = (
     ></path>
   </svg>
 );
-const profile = (
+export const profile = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -264,7 +264,7 @@ const profile = (
     ></path>
   </svg>
 );
-const setting = (
+export const setting = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -282,7 +282,7 @@ const setting = (
     ></path>
   </svg>
 );
-const spinner = (
+export const spinner = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -300,7 +300,7 @@ const spinner = (
     ></path>
   </svg>
 );
-const add = (
+export const add = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -318,7 +318,7 @@ const add = (
     ></path>
   </svg>
 );
-const camera = (
+export const camera = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -336,7 +336,7 @@ const camera = (
     ></path>
   </svg>
 );
-const facebook = (
+export const facebook = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -354,7 +354,7 @@ const facebook = (
     ></path>
   </svg>
 );
-const twitter = (
+export const twitter = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -372,7 +372,7 @@ const twitter = (
     ></path>
   </svg>
 );
-const google = (
+export const google = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -390,7 +390,7 @@ const google = (
     ></path>
   </svg>
 );
-const userLogin = (
+export const userLogin = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -408,7 +408,7 @@ const userLogin = (
     ></path>
   </svg>
 );
-const eyeHidenLogin = (
+export const eyeHidenLogin = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -426,7 +426,7 @@ const eyeHidenLogin = (
     ></path>
   </svg>
 );
-const eyeShowLogin = (
+export const eyeShowLogin = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -444,7 +444,7 @@ const eyeShowLogin = (
     ></path>
   </svg>
 );
-const lockLogin = (
+export const lockLogin = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -462,7 +462,7 @@ const lockLogin = (
     ></path>
   </svg>
 );
-const iconLogout = (
+export const iconLogout = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -480,7 +480,7 @@ const iconLogout = (
     ></path>
   </svg>
 );
-const iconLogin = (
+export const iconLogin = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -498,7 +498,7 @@ const iconLogin = (
     ></path>
   </svg>
 );
-const userHome = (
+export const userHome = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -516,7 +516,7 @@ const userHome = (
     ></path>
   </svg>
 );
-const nameLogin = (
+export const nameLogin = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -534,7 +534,7 @@ const nameLogin = (
     ></path>
   </svg>
 );
-const service = (
+export const service = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -552,7 +552,7 @@ const service = (
     ></path>
   </svg>
 );
-const gallegy = (
+export const gallegy = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -570,7 +570,7 @@ const gallegy = (
     ></path>
   </svg>
 );
-const tag = (
+export const tag = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -588,7 +588,7 @@ const tag = (
     ></path>
   </svg>
 );
-const weight = (
+export const weight = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -606,7 +606,7 @@ const weight = (
     ></path>
   </svg>
 );
-const contact = (
+export const contact = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -624,7 +624,7 @@ const contact = (
     ></path>
   </svg>
 );
-const search = (
+export const search = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -642,7 +642,7 @@ const search = (
     ></path>
   </svg>
 );
-const dog = (
+export const dog = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -660,7 +660,7 @@ const dog = (
     ></path>
   </svg>
 );
-const cat = (
+export const cat = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -678,7 +678,7 @@ const cat = (
     ></path>
   </svg>
 );
-const useCheck = (
+export const useCheck = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -696,7 +696,7 @@ const useCheck = (
     ></path>
   </svg>
 );
-const check = (
+export const check = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -714,7 +714,7 @@ const check = (
     ></path>
   </svg>
 );
-const notCheck = (
+export const notCheck = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -732,7 +732,7 @@ const notCheck = (
     ></path>
   </svg>
 );
-const petCheckNull = (
+export const petCheckNull = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -757,7 +757,7 @@ const petCheckNull = (
     </g>
   </svg>
 );
-const petCheckPending = (
+export const petCheckPending = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -782,7 +782,7 @@ const petCheckPending = (
     </g>
   </svg>
 );
-const petCheckSuccess = (
+export const petCheckSuccess = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -807,7 +807,7 @@ const petCheckSuccess = (
     </g>
   </svg>
 );
-const category = (
+export const category = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -825,7 +825,7 @@ const category = (
     ></path>
   </svg>
 );
-const product = (
+export const product = (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -843,50 +843,30 @@ const product = (
     ></path>
   </svg>
 );
-export {
-  product,
-  category,
-  petCheckNull,
-  petCheckPending,
-  petCheckSuccess,
-  check,
-  notCheck,
-  useCheck,
-  cat,
-  dog,
-  search,
-  bar,
-  contact,
-  weight,
-  gallegy,
-  tag,
-  service,
-  nameLogin,
-  userHome,
-  iconLogout,
-  iconLogin,
-  userLogin,
-  lockLogin,
-  eyeShowLogin,
-  eyeHidenLogin,
-  twitter,
-  google,
-  facebook,
-  camera,
-  add,
-  spinner,
-  home,
-  setting,
-  profile,
-  logoAdmin,
-  app,
-  news,
-  bell,
-  group,
-  close,
-  dot,
-  trash,
-  edit,
-  statusOff,
-  statusOn,
-};
+export const cart = (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fad"
+    data-icon="shopping-cart"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 576 512"
+    class="svg-inline--fa fa-shopping-cart fa-w-18 fa-3x"
+  >
+    <g class="fa-group">
+      <path
+        fill="currentColor"
+        d="M552 64H159.21l52.36 256h293.15a24 24 0 0 0 23.4-18.68l47.27-208a24 24 0 0 0-18.08-28.72A23.69 23.69 0 0 0 552 64z"
+        class="fa-secondary"
+        style={{ color: "#f3a092" }}
+      ></path>
+      <path
+        fill="currentColor"
+        d="M218.12 352h268.42a24 24 0 0 1 23.4 29.32l-5.52 24.28a56 56 0 1 1-63.6 10.4H231.18a56 56 0 1 1-67.05-8.57L93.88 64H24A24 24 0 0 1 0 40V24A24 24 0 0 1 24 0h102.53A24 24 0 0 1 150 19.19z"
+        class="fa-primary"
+        style={{ color: "#f75a3f" }}
+      ></path>
+    </g>
+  </svg>
+);

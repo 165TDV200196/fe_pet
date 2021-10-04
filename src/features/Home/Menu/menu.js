@@ -25,7 +25,7 @@ export const menuJs = (MenuEl, MenuHidentEl, MenuBarEl) => {
   };
   const clickBar = () => {
     if (indexShowMenu === "khong") {
-      menuHide.style.height = "309px";
+      menuHide.style.height = "350px";
       indexShowMenu = "co";
     } else {
       menuHide.style.height = "0";

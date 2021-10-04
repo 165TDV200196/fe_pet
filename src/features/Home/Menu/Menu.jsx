@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import userApi from "../../../api/userApi";
 import "../../../sass/Home/Menu.scss";
 import {
   bar,
@@ -9,12 +8,13 @@ import {
   search,
   userHome,
 } from "../../Admin/svg/IconSvg";
+import Cart from "../Cart/Cart";
 import { menuJs } from "./menu";
 
 export default function Menu({ user, setUserMenu, loadUser }) {
   const [openSelect, setOpenSelect] = useState("hident");
   const [initSelect, setinitSelect] = useState("none");
-  const [load, setLoad] = useState(true);
+  // const [load, setLoad] = useState(true);
   const MenuEl = useRef(null);
   const MenuHidentEl = useRef(null);
   const MenuBarEl = useRef(null);
@@ -52,7 +52,7 @@ export default function Menu({ user, setUserMenu, loadUser }) {
           <div className="list-item">
             <ul>
               <li className="item">
-                <Link>Trang chủ</Link>
+                <Link to="">Trang chủ</Link>
               </li>
               <li className="item">
                 <Link to="/Shop">Cửa hàng</Link>
@@ -77,6 +77,7 @@ export default function Menu({ user, setUserMenu, loadUser }) {
           <div className="avatar" onClick={ClickAvatar}>
             <img src={user ? user.avatar : avatarDefault} alt="" />
           </div>
+          <Cart />
           <div
             className={`select ${openSelect}`}
             style={{ display: `${initSelect}` }}

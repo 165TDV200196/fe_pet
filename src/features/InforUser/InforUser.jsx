@@ -1,14 +1,14 @@
 import { Container } from "@material-ui/core";
 import React, { useEffect, useRef } from "react";
+import "../../sass/Home/Tabs.scss";
+import { cat, dog, setting, userHome } from "../Admin/svg/IconSvg";
 import Banner from "../Banner/Banner";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import "../../sass/Home/Tabs.scss";
-import { bar, cat, dog, search, setting, userHome } from "../Admin/svg/IconSvg";
-import { tabJs } from "./tab";
-import Information from "./Panes/Information";
-import EditInformation from "./Panes/EditInformation";
 import CreatePet from "./Panes/CreatePet";
+import EditInformation from "./Panes/EditInformation";
+import Information from "./Panes/Information";
 import MyPet from "./Panes/MyPet";
+import { tabJs } from "./tab";
 export default function InforUser() {
   const listBread = [{ name: "Trang chủ", link: "/" }, { name: "Thông tin" }];
   const itemsEl = useRef(null);
