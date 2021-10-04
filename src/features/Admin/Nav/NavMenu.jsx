@@ -24,10 +24,9 @@ export default function NavMenu() {
   useEffect(() => {
     const listLi = ulEL.current.querySelectorAll("li a");
     const listActive = ulEL.current.querySelector("li>a.active");
-    // let pathCutAdmin = pathname.slice(7);
+   
     let idClass = pathname.slice(7).split("/");
-    // let indexPath = pathCutAdmin.indexOf("/");
-    // let idClass = pathCutAdmin.slice(0, indexPath);
+    
     listActive.classList.remove("active");
     let liIndex = 0;
     for (let i = 0; i < listLi.length; i++) {
