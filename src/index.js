@@ -7,6 +7,7 @@ import Routers from "./routers/Router";
 import "./sass/Public.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
+ //xin chào các bạn
 ReactDOM.render(
   <Router>
     <Provider store={store}>
