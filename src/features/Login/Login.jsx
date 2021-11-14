@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import loginApi from "../../api/loginApi";
+import { userData } from "../../app/Slice/UserSlice";
 import { messageShowErr, messageShowSuccess } from "../../function";
 import imgDog from "../../images/login.png";
 import "../../sass/Login/Login.scss";
@@ -29,6 +31,10 @@ export default function Login() {
     backgroundSize: "cover",
   };
   const history = useHistory();
+  const dispatch = useDispatch();
+  const actionResult = async (page) => {
+    await dispatch(userData());
+  };
   const onSubmit = async (data) => {
     await loginApi
       .login({ email: data.email, password: data.password })
@@ -38,6 +44,9 @@ export default function Login() {
         } else {
           messageShowSuccess(`Đăng nhập thành công!`);
           localStorage.setItem("tokenPet", ok);
+          setTimeout(() => {
+            actionResult();
+          }, 300);
           history.push("/");
         }
       });

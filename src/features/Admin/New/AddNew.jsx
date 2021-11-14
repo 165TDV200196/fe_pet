@@ -1,6 +1,7 @@
 import JoditEditor from "jodit-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import Select from "react-select";
 import newApi from "../../../api/newApi";
@@ -21,6 +22,8 @@ export default function AddNew() {
     tagDefault: [],
     loadSpin: false,
   });
+  const userId = useSelector((state) => state.user.user.id);
+
   const { linkImg, nameImg, img, tagId, imgId, tagDefault, loadSpin } = state;
   const [tags, setTags] = useState([]);
   const { id } = useParams();
@@ -53,8 +56,8 @@ export default function AddNew() {
   const history = useHistory();
   const [content, setContent] = useState();
   const onSubmit = async (data) => {
-    setState({ ...state, loadSpin: true });
     if (img !== "" || imgId !== "") {
+      setState({ ...state, loadSpin: true });
       if (id) {
         if (img !== "") {
           await storage.ref(`imagesNews/${img.name}`).put(img);
@@ -122,6 +125,7 @@ export default function AddNew() {
         }
         await newApi.postnew({
           name: data.name,
+          userId,
           samary: data.samary,
           content: content,
           avatar: anh,

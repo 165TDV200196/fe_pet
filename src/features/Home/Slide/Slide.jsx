@@ -5,12 +5,33 @@ import imgDog from "../../../images/dog1.jpg";
 import imgVoi from "../../../images/voi1.jpg";
 import { useRef } from "react";
 import { useEffect } from "react";
-import { slideHome } from "./slide";
 export default function Slide() {
   const slideEl = useRef(null);
 
   useEffect(() => {
-    slideHome(slideEl.current);
+    let slides = slideEl.current.querySelectorAll(".slide-item");
+    let slideIndex = 0;
+    const slideShow = (n) => {
+      let slideActive = slideEl.current.querySelector(
+        ".slide-item.slide-active"
+      );
+      slideActive.classList.remove("slide-active");
+      slides[n].classList.add("slide-active");
+    };
+    const AutoSlide = () => {
+      if (slideIndex === slides.length - 1) {
+        slideIndex = 0;
+      } else if (slideIndex >= 0) {
+        slideIndex += 1;
+      }
+      slideShow(slideIndex);
+    };
+    let a = setInterval(() => {
+      AutoSlide();
+    }, 4000);
+    return () => {
+      clearInterval(a);
+    };
   }, []);
 
   return (

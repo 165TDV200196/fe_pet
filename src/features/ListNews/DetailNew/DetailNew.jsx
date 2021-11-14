@@ -38,8 +38,10 @@ export default function DetailNew() {
             <div className="new">
               <div className="new-title">{data?.name}</div>
               <div className="new-tag">
-                {data?.Tags?.map((oki) => (
-                  <div className="tag">{oki.name}</div>
+                {data?.Tags?.map((oki, index) => (
+                  <div className="tag" key={index}>
+                    {oki.name}
+                  </div>
                 ))}
               </div>
               <div className="new-author">
@@ -75,7 +77,7 @@ export default function DetailNew() {
                 <div className="other-new-content">
                   <ul>
                     <li>
-                      <Link>
+                      <Link to="#">
                         <div className="new-other">
                           <div className="img">
                             <img src={img1} alt="" />
@@ -89,7 +91,7 @@ export default function DetailNew() {
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to="#">
                         <div className="new-other">
                           <div className="img">
                             <img src={img1} alt="" />
@@ -103,7 +105,7 @@ export default function DetailNew() {
                       </Link>
                     </li>{" "}
                     <li>
-                      <Link>
+                      <Link to="#">
                         <div className="new-other">
                           <div className="img">
                             <img src={img1} alt="" />
@@ -116,7 +118,7 @@ export default function DetailNew() {
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to="#">
                         <div className="new-other">
                           <div className="img">
                             <img src={img1} alt="" />
@@ -129,7 +131,7 @@ export default function DetailNew() {
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to="#">
                         <div className="new-other">
                           <div className="img">
                             <img src={img1} alt="" />

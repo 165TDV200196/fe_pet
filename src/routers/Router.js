@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 import userApi from "../api/userApi";
+import { userData } from "../app/Slice/UserSlice";
 import Nav from "../features/Admin/Nav/Nav";
 import Home from "../features/Home";
 import Footer from "../features/Home/Footer/Footer";
@@ -15,19 +18,25 @@ import ShopPet from "../features/Shop/ShopPet/ShopPet";
 const Routers = (props) => {
   const { location } = props;
   const pathName = location.pathname;
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [load, setLoad] = useState(false);
-  
-  useEffect(async() => {
-    await userApi.checkUser().then((ok) => {
-      setUser(ok);
-    });
+  const dispatch = useDispatch();
+  const actionResult = async (page) => {
+    await dispatch(userData());
+  };
+  const user = useSelector((state) => state.user.user);
+
+  useEffect(async () => {
+    actionResult();
   }, [load]);
   const checkLoad = () => {
     setLoad(!load);
   };
   const hangdleLogout = (e) => {
-    setUser(e);
+    localStorage.removeItem("tokenPet");
+    setTimeout(() => {
+      actionResult();
+    }, 200);
   };
   return (
     <div>
@@ -51,13 +60,13 @@ const Routers = (props) => {
         <Route
           path="/InforUser/:id"
           render={() => {
-            return user ? <InforUser /> : <Login />;
+            return user.length === 0 ? <Login /> : <InforUser />;
           }}
         />
         <Route
           path="/Admin"
           render={() => {
-            return user ? <Nav /> : <Login />;
+            return user.length === 0 ? <Login /> : <Nav />;
           }}
         />
       </Switch>

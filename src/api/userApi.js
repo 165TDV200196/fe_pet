@@ -7,9 +7,13 @@ class UserApi {
   };
   checkUser = (params) => {
     const url = `/users/checkUser`;
-    return axiosClient.get(url).then((data) => {
-      return data.data.user;
-    });
+    if (localStorage.getItem("tokenPet")) {
+      return axiosClient.get(url).then((data) => {
+        return data.data.user;
+      });
+    } else {
+      return [];
+    }
   };
   getOne = (params) => {
     const url = `/users/${params}`;

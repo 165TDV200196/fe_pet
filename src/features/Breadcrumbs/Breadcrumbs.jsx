@@ -6,7 +6,9 @@ export default function Breadcrumbs({ breadCrumbList }) {
     <div className="Breadcrumbs">
       <div className="list">
         {breadCrumbList.map((ok, index) => (
-          <Link to={ok.link}>{ok.name}</Link>
+          <Link to={ok.link} key={index}>
+            {ok.name}
+          </Link>
         ))}
       </div>
     </div>

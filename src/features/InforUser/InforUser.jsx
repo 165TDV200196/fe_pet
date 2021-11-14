@@ -24,19 +24,19 @@ export default function InforUser() {
       <Container>
         <div className="tabs">
           <div className="items" ref={itemsEl}>
-            <div class="tab-item ">
+            <div className="tab-item ">
               <div className="icon">{userHome}</div>
               Thông tin người dùng
             </div>
-            <div class="tab-item ">
+            <div className="tab-item ">
               <div className="icon">{setting}</div>
               Sửa thông tin
             </div>
-            <div class="tab-item ">
+            <div className="tab-item ">
               <div className="icon">{dog}</div>
               Đăng bán thú cưng
             </div>
-            <div class="tab-item ">
+            <div className="tab-item ">
               <div className="icon">{cat}</div> Thú cưng của tôi
             </div>
             <div className="line" ref={lineEl}></div>

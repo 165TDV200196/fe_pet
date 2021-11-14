@@ -11,7 +11,7 @@ import {
 import Cart from "../Cart/Cart";
 import { menuJs } from "./menu";
 
-export default function Menu({ user, setUserMenu, loadUser }) {
+export default function Menu({ user, setUserMenu }) {
   const [openSelect, setOpenSelect] = useState("hident");
   const [initSelect, setinitSelect] = useState("none");
   // const [load, setLoad] = useState(true);
@@ -22,23 +22,60 @@ export default function Menu({ user, setUserMenu, loadUser }) {
     setinitSelect("flex");
     setOpenSelect(openSelect === "hident" ? "" : "hident");
   };
-  const selectEL = useRef("null");
+  const selectEL = useRef(null);
   useEffect(() => {
-    menuJs(MenuEl.current, MenuHidentEl.current, MenuBarEl.current);
+    // menuJs(MenuEl.current, MenuHidentEl.current, MenuBarEl.current);
+    let menuHide = MenuHidentEl.current;
+    let menuBar = MenuBarEl.current;
+    let Menu = MenuEl.current;
+    let indexShowMenu = "khong";
+
+    const resizeMenu = (n) => {
+      if (n <= 937) {
+        menuHide.style.height = "0px";
+        indexShowMenu = "khong";
+      } else {
+        menuHide.style.height = "auto";
+        indexShowMenu = "co";
+      }
+    };
+    menuBar.onclick = () => {
+      clickBar();
+    };
+    const clickBar = () => {
+      if (indexShowMenu === "khong") {
+        menuHide.style.height = "350px";
+        indexShowMenu = "co";
+      } else {
+        menuHide.style.height = "0";
+        indexShowMenu = "khong";
+      }
+    };
+    const scrollDestop = () => {
+      if (window.pageYOffset >= 16) {
+        Menu.classList.add("menu-scroll");
+      } else {
+        Menu.classList.remove("menu-scroll");
+      }
+    };
+    const resizeDestop = () => {
+      var widthScreen = window.innerWidth;
+      resizeMenu(widthScreen);
+    };
+    window.addEventListener("scroll", scrollDestop);
+    window.addEventListener("resize", resizeDestop);
+    return () => {
+      window.removeEventListener("resize", resizeDestop);
+      window.removeEventListener("scroll", scrollDestop);
+    };
   }, []);
   const hangdleLogout = () => {
-    setUserMenu(null);
+    setUserMenu();
   };
   const avatarDefault =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWalCQZajCWwnxKEE86RcbGh2i1XxEQ9Jkxt6ijNjm1CrvdnYilpInfHHVeriUng58IBo&usqp=CAU";
   return (
-    <div
-      className="Menu"
-      ref={MenuEl}
-      onLoad={() => {
-        loadUser();
-      }}
-    >
+    <div className="Menu" ref={MenuEl}>
       <div className="menu-logo">
         <div className="logo">
           <Link to="/">my pet</Link>
@@ -58,7 +95,7 @@ export default function Menu({ user, setUserMenu, loadUser }) {
                 <Link to="/Shop">Cửa hàng</Link>
               </li>
               <li className="item">
-                <Link>Giới thiệu</Link>
+                <Link to="">Giới thiệu</Link>
               </li>
               <li className="item">
                 <Link to="/ListNews">Tin tức</Link>
@@ -75,7 +112,7 @@ export default function Menu({ user, setUserMenu, loadUser }) {
             <div className="icon">{search}</div>
           </div>
           <div className="avatar" onClick={ClickAvatar}>
-            <img src={user ? user.avatar : avatarDefault} alt="" />
+            <img src={user.length === 0 ? avatarDefault : user.avatar} alt="" />
           </div>
           <Cart />
           <div
@@ -83,7 +120,16 @@ export default function Menu({ user, setUserMenu, loadUser }) {
             style={{ display: `${initSelect}` }}
             ref={selectEL}
           >
-            {user ? (
+            {user.length === 0 ? (
+              <ul>
+                <li>
+                  <Link to="/login">
+                    <div className="icon">{iconLogin}</div>
+                    <div className="text">Đăng nhập</div>
+                  </Link>
+                </li>
+              </ul>
+            ) : (
               <ul>
                 <li>
                   <Link to={`/InforUser/${user.id}`}>
@@ -100,15 +146,6 @@ export default function Menu({ user, setUserMenu, loadUser }) {
                   >
                     <div className="icon">{iconLogout}</div>
                     <div className="text">Đăng xuất</div>
-                  </Link>
-                </li>
-              </ul>
-            ) : (
-              <ul>
-                <li>
-                  <Link to="/login">
-                    <div className="icon">{iconLogin}</div>
-                    <div className="text">Đăng nhập</div>
                   </Link>
                 </li>
               </ul>
