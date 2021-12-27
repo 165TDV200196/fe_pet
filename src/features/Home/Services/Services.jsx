@@ -26,13 +26,13 @@ export default function Services() {
       </div>
       <div className="container">
         <div className="post-grid">
-          {data?.map((ok) => (
-            <div className="post-item">
+          {data?.map((ok, index) => (
+            <div className="post-item" key={index}>
               <div className="icon">{renderHTML(ok.icon)}</div>
               <div className="title">{ok.name}</div>
               <div className="description">{ok.description}</div>
               <div className="btn">
-                <Link>Đăng ký ngay</Link>
+                <Link to="#">Đăng ký ngay</Link>
               </div>
             </div>
           ))}

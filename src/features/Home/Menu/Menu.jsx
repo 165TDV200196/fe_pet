@@ -9,7 +9,6 @@ import {
   userHome,
 } from "../../Admin/svg/IconSvg";
 import Cart from "../Cart/Cart";
-import { menuJs } from "./menu";
 
 export default function Menu({ user, setUserMenu }) {
   const [openSelect, setOpenSelect] = useState("hident");
@@ -18,11 +17,14 @@ export default function Menu({ user, setUserMenu }) {
   const MenuEl = useRef(null);
   const MenuHidentEl = useRef(null);
   const MenuBarEl = useRef(null);
+
   const ClickAvatar = () => {
     setinitSelect("flex");
     setOpenSelect(openSelect === "hident" ? "" : "hident");
   };
+
   const selectEL = useRef(null);
+
   useEffect(() => {
     // menuJs(MenuEl.current, MenuHidentEl.current, MenuBarEl.current);
     let menuHide = MenuHidentEl.current;
@@ -69,11 +71,14 @@ export default function Menu({ user, setUserMenu }) {
       window.removeEventListener("scroll", scrollDestop);
     };
   }, []);
-  const hangdleLogout = () => {
+
+  const handleLogout = () => {
     setUserMenu();
   };
+
   const avatarDefault =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWalCQZajCWwnxKEE86RcbGh2i1XxEQ9Jkxt6ijNjm1CrvdnYilpInfHHVeriUng58IBo&usqp=CAU";
+
   return (
     <div className="Menu" ref={MenuEl}>
       <div className="menu-logo">
@@ -139,9 +144,10 @@ export default function Menu({ user, setUserMenu }) {
                 </li>
                 <li>
                   <Link
+                    to="#"
                     onClick={() => {
                       localStorage.removeItem("tokenPet");
-                      hangdleLogout();
+                      handleLogout();
                     }}
                   >
                     <div className="icon">{iconLogout}</div>

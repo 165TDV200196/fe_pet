@@ -55,13 +55,13 @@ export default function NavHeading() {
                 </Link>
               </li>
               <li>
-                <Link>
+                <Link to="#">
                   <div className="icon">{profile}</div>
                   <div className="profile">Cá nhân</div>
                 </Link>
               </li>
               <li>
-                <Link>
+                <Link to="#">
                   <div className="icon">{setting}</div>
                   <div className="setting">Chỉnh sửa</div>
                 </Link>

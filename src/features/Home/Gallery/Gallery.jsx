@@ -19,8 +19,8 @@ export default function Gallery() {
       </div>
       <Container maxWidth="lg">
         <div className="post-grid">
-          {data?.map((ok) => (
-            <div className="grid-item">
+          {data?.map((ok, index) => (
+            <div className="grid-item" key={index}>
               <img src={ok.link} alt="" />
             </div>
           ))}

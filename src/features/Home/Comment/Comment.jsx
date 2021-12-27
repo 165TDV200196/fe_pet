@@ -68,7 +68,7 @@ export default function Comment() {
                       </div>
                       <div className="name">Nguyễn Thị Thái</div>
                       <div className="star">
-                        <Rating value={5} />
+                        <Rating value={5} readOnly />
                       </div>
                     </div>
                   </div>
@@ -123,7 +123,7 @@ export default function Comment() {
                       </div>
                       <div className="name">Nguyễn Thị Thái</div>
                       <div className="star">
-                        <Rating value={3} />
+                        <Rating value={3} readOnly />
                       </div>
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function Comment() {
                       </div>
                       <div className="name">Nguyễn Thị Thái</div>
                       <div className="star">
-                        <Rating value={5} />
+                        <Rating value={5} readOnly />
                       </div>
                     </div>
                   </div>

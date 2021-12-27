@@ -30,8 +30,8 @@ export default function News() {
       </div>
       <Container maxWidth="lg">
         <div className="new-content">
-          {data?.map((ok) => (
-            <div className="new-item">
+          {data?.map((ok, index) => (
+            <div className="new-item" key={index}>
               <div className="img">
                 <img src={ok.avatar} alt="" />
               </div>

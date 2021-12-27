@@ -1,7 +1,7 @@
-export const showAction = (e) => {
+export const showAction = (e, blur) => {
   const actionBtn = e.querySelectorAll(".action");
   const actionsShow = e.querySelectorAll(".action-content");
-  const blurJs = e.querySelector(".blurJs");
+  const blurJs = blur;
 
   let i = 0;
   blurJs.onclick = function (e) {
