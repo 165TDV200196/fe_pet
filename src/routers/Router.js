@@ -15,6 +15,7 @@ import Login from "../features/Login/Login";
 import Register from "../features/Register/Register";
 import DetailPet from "../features/Shop/DetailPet/DetailPet";
 import ShopPet from "../features/Shop/ShopPet/ShopPet";
+import TestBarCodeTwo from "./TestInput";
 const Routers = (props) => {
   const { location } = props;
   const pathName = location.pathname;
@@ -49,7 +50,8 @@ const Routers = (props) => {
       )}
       <Switch>
         <Route exact path="/">
-          <Home />
+          <TestBarCodeTwo />
+          {/* <Home /> */}
         </Route>
         <Route exact path="/ListNews" component={ListNews} />
         <Route exact path="/Shop" component={ShopPet} />
