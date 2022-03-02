@@ -33,6 +33,7 @@ class PetApi {
     });
   };
   postpet = (params) => {
+    console.log("PetApi ~ params", params);
     const url = "/pets";
     return axiosClient
       .post(url, params)

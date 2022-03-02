@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import petApi from "../../../api/petApi";
 import "../../../sass/Admin/PetDatail.scss";
+import reactRenderHtml from "react-render-html";
 export default function PetDetail() {
   const { id } = useParams();
   const [data, setData] = useState(null);
@@ -39,7 +40,7 @@ export default function PetDetail() {
         </div>
         <div className="text">
           <div className="title">Chi tiết</div>
-          {data?.text}
+          {reactRenderHtml(data ? data?.text : "")}
         </div>
       </div>
     </div>

@@ -10,20 +10,25 @@ import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 import Related from "../Related/Related";
 import "./DetailPetJs";
 import { ClickImg } from "./DetailPetJs";
+
 export default function DetailPet() {
   const [data, setData] = useState(null);
+  const [load, setLoad] = useState(false);
   const [quantityNumber, setQuantityNumber] = useState(1);
   const hangdleQuantityNumber = (e) => {
     setQuantityNumber(e.target.value);
   };
+
   const listBread = [
     { name: "Trang chủ", link: "/" },
     { name: "Cửa hàng", link: "/Shop" },
     { name: data?.name },
   ];
+
   const { id, type } = useParams();
   const imgActiveEl = useRef(null);
   const listImgEl = useRef(null);
+
   useEffect(() => {
     if (type === "pet") {
       petApi.getOne(id).then((ok) => {
@@ -35,10 +40,12 @@ export default function DetailPet() {
       });
     }
     window.scrollTo(0, 0);
-  }, []);
+  }, [load]);
+
   useEffect(() => {
     ClickImg(imgActiveEl.current, listImgEl.current);
   }, [data]);
+
   return (
     <div className="DetailPet">
       <Banner />
@@ -52,13 +59,13 @@ export default function DetailPet() {
               </div>
               <div className="list-img" ref={listImgEl}>
                 {type === "pet"
-                  ? data?.imgpet?.map((ok) => (
-                      <div className="img">
+                  ? data?.imgpet?.map((ok, index) => (
+                      <div className="img" key={index}>
                         <img src={ok.link} alt="" />
                       </div>
                     ))
-                  : data?.imgproduct?.map((ok) => (
-                      <div className="img">
+                  : data?.imgproduct?.map((ok, index) => (
+                      <div className="img" key={index}>
                         <img src={ok.link} alt="" />
                       </div>
                     ))}
@@ -110,7 +117,14 @@ export default function DetailPet() {
             </div>
           </Grid>
         </Grid>
-        <Related />
+        <Related
+          type={data?.type}
+          id={id}
+          load={load}
+          onLoad={() => {
+            setLoad(!load);
+          }}
+        />
       </div>
     </div>
   );

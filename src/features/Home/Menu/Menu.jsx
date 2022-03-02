@@ -12,6 +12,7 @@ import Cart from "../Cart/Cart";
 
 export default function Menu({ user, setUserMenu }) {
   const [openSelect, setOpenSelect] = useState("hident");
+  console.log("openSelect", openSelect);
   const [initSelect, setinitSelect] = useState("none");
   // const [load, setLoad] = useState(true);
   const MenuEl = useRef(null);
@@ -120,6 +121,9 @@ export default function Menu({ user, setUserMenu }) {
             <img src={user.length === 0 ? avatarDefault : user.avatar} alt="" />
           </div>
           <Cart />
+          {openSelect === "" && (
+            <div className="blur" onClick={ClickAvatar}></div>
+          )}
           <div
             className={`select ${openSelect}`}
             style={{ display: `${initSelect}` }}
@@ -128,7 +132,7 @@ export default function Menu({ user, setUserMenu }) {
             {user.length === 0 ? (
               <ul>
                 <li>
-                  <Link to="/login">
+                  <Link to="/login" onClick={ClickAvatar}>
                     <div className="icon">{iconLogin}</div>
                     <div className="text">Đăng nhập</div>
                   </Link>
@@ -137,7 +141,7 @@ export default function Menu({ user, setUserMenu }) {
             ) : (
               <ul>
                 <li>
-                  <Link to={`/InforUser/${user.id}`}>
+                  <Link to={`/InforUser/${user.id}`} onClick={ClickAvatar}>
                     <div className="icon">{userHome}</div>
                     <div className="text">Thông tin </div>
                   </Link>
@@ -149,6 +153,7 @@ export default function Menu({ user, setUserMenu }) {
                       localStorage.removeItem("tokenPet");
                       handleLogout();
                     }}
+                    onClick={ClickAvatar}
                   >
                     <div className="icon">{iconLogout}</div>
                     <div className="text">Đăng xuất</div>

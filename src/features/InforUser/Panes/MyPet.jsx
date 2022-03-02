@@ -77,8 +77,8 @@ export default function MyPet() {
   return (
     <div className="tab-pane">
       <Grid container spacing={4}>
-        {data?.map((ok) => (
-          <Grid item lg={6} md={6} sm={6} xs={12}>
+        {data?.map((ok, index) => (
+          <Grid item lg={6} md={6} sm={6} xs={12} key={index}>
             <div className="myPet">
               <div className="avatar">
                 <img src={ok.avatar} alt="" />
@@ -106,6 +106,7 @@ export default function MyPet() {
               <div className="checkadmin">
                 {renderCheckAdmin(ok.checkAdmin)}
               </div>
+              <p className="btn-delete">Xoá</p>
               {ok.status === 1 ? (
                 <p
                   className="btn-no"

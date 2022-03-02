@@ -21,11 +21,13 @@ export default function ShopPet() {
   const [category, setCategory] = useState("Thức ăn cho chó");
   const [countPet, setCountPet] = useState(null);
   const typingTimeout = useRef(null);
+
   useEffect(() => {
     petApi.getShop({ page, type, category, petOrProduct, name }).then((ok) => {
       setData(ok.data);
     });
   }, [page, type, category, petOrProduct, name]);
+
   useEffect(() => {
     categoryApi.getAll({ status: 1 }).then((ok) => {
       setCategoryData(ok.data.rows);
@@ -35,6 +37,7 @@ export default function ShopPet() {
     });
     window.scrollTo(0, 0);
   }, []);
+
   const onChangeName = (e) => {
     const { value } = e.target;
     if (typingTimeout.current) {
@@ -44,14 +47,17 @@ export default function ShopPet() {
       setName(value);
     }, 300);
   };
+
   const onChangeTypePet = (e) => {
     setPetOrProduct("pet");
     setType(e);
   };
+
   const onChangeCategory = (e) => {
     setPetOrProduct("product");
     setCategory(e);
   };
+
   return (
     <div className="Shop">
       <Banner />
@@ -97,10 +103,11 @@ export default function ShopPet() {
               <div className="grand">
                 <div className="title">Danh mục sản phẩm</div>
                 <div className="content">
-                  {categoryData?.map((ok) => (
+                  {categoryData?.map((ok, index) => (
                     <div
                       className="item"
                       onClick={() => onChangeCategory(ok.name)}
+                      key={index}
                     >
                       {ok.name}
                     </div>
@@ -111,8 +118,8 @@ export default function ShopPet() {
           </Grid>
           <Grid item lg={9} md={9} sm={9} xs={12}>
             <Grid container spacing={2}>
-              {data?.rows?.map((ok) => (
-                <Grid item lg={3} md={4} sm={6}>
+              {data?.rows?.map((ok, index) => (
+                <Grid item lg={3} md={4} sm={6} key={index}>
                   <div className="item-pet">
                     <div className="img">
                       <img src={ok.avatar} alt="" />

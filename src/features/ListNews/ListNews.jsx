@@ -31,8 +31,8 @@ export default function ListNews() {
           <div className="heading-detail__hr"></div>
         </div>
         <Grid container spacing={2} className="content-item">
-          {data?.rows?.map((ok) => (
-            <Grid item lg={3} md={3} sm={6}>
+          {data?.rows?.map((ok, index) => (
+            <Grid item lg={3} md={3} sm={6} key={index}>
               <div className="item-new">
                 <div className="img">
                   <img src={ok.avatar} alt="" />

@@ -51,10 +51,8 @@ export default function CreatePet() {
     });
   }, []);
   const onchangeType = (e) => {
-    console.log(e);
     setState({ ...state, type: e.value });
   };
-  console.log(state);
   const onSubmit = async (data) => {
     setState({ ...state, load: !load });
     messageShowSuccess("Vui vòng đợi trong giây lát!");
@@ -72,7 +70,7 @@ export default function CreatePet() {
         .getDownloadURL();
       imgpet.push({ link: imgPets });
     }
-    await petApi.postpet({
+    console.log("he", {
       name: data.name,
       price: data.price,
       description: data.description,
@@ -81,6 +79,18 @@ export default function CreatePet() {
       type: type,
       userId: userId,
       imgpet,
+      status: 0,
+    });
+    petApi.postpet({
+      name: data.name,
+      price: data.price,
+      description: data.description,
+      text: text,
+      avatar: anh,
+      type: type,
+      userId: userId,
+      imgpet,
+      checkAdmin: 1,
       status: 0,
     });
   };

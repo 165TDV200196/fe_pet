@@ -240,7 +240,6 @@ export default function AddProduct() {
               quantity: data.quantity,
               text: text,
               categoryId: categoryId === "" ? categoryDefault.id : categoryId,
-              status: 0,
               id: id,
             });
           } else {
@@ -258,7 +257,6 @@ export default function AddProduct() {
               quantity: data.quantity,
               text: text,
               categoryId: categoryId === "" ? categoryDefault.id : categoryId,
-              status: 0,
               id: id,
             });
           }
@@ -336,7 +334,7 @@ export default function AddProduct() {
     <div className="CreateAdmin">
       <div className="heading">
         <div className="heading__title">
-          <h3>Thêm sản phẩm</h3>
+          <h3>{!id ? "Thêm sản phẩm" : "Sửa sản phẩm"}</h3>
         </div>
         <div className="heading__hr"></div>
       </div>
