@@ -1,15 +1,19 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import img1 from "../../../images/pet6.jpg";
 import "../../../sass/Admin/Nav.scss";
+import Bill from "../bill/bill";
 import {
   app,
+  bills,
   category,
   contact,
   gallegy,
   logoAdmin,
   news,
   product,
+  schedule,
   service,
   tag,
   twitter,
@@ -20,6 +24,7 @@ import { clickActive } from "./NavJs";
 export default function NavMenu() {
   const ulEL = useRef(null);
   const lineEL = useRef(null);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     const listLi = ulEL.current.querySelectorAll("li a");
@@ -50,7 +55,7 @@ export default function NavMenu() {
       </div>
       <div className="user">
         <div className="avatar">
-          <img src={img1} alt="" />
+          <img src={user?.avatar} alt="" />
         </div>
         <div className="content">
           <div className="title">Chức vụ</div>
@@ -95,6 +100,18 @@ export default function NavMenu() {
             <Link to={`${path}/Tag`} id="Tag">
               <div className="icon">{tag}</div>
               <div className="text">Tag</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Bill`} id="Bill">
+              <div className="icon">{bills}</div>
+              <div className="text">Hoá đơn</div>
+            </Link>
+          </li>
+          <li>
+            <Link to={`${path}/Schedule`} id="Schedule">
+              <div className="icon">{schedule}</div>
+              <div className="text">Đặt lịch</div>
             </Link>
           </li>
           <li>

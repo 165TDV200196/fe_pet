@@ -84,6 +84,7 @@ export default function CreatePet() {
     petApi.postpet({
       name: data.name,
       price: data.price,
+      quantity: data.quantity,
       description: data.description,
       text: text,
       avatar: anh,
@@ -173,6 +174,19 @@ export default function CreatePet() {
             )}
           </div>
           <div className="input-admin">
+            <label htmlFor="">Số lượng</label>
+            <input
+              type="number"
+              {...register("quantity", {
+                required: "Không được bỏ trống!",
+                maxLength: { value: 255, message: "Vượt quá ký tự cho phép" },
+              })}
+            />
+            {errors.quantity && (
+              <span className="text-danger">{errors.quantity.message}</span>
+            )}
+          </div>
+          <div className="input-admin">
             <label htmlFor="">Mô tả</label>
             <textarea
               name=""
@@ -205,7 +219,12 @@ export default function CreatePet() {
             />
           </div>
           <div className="btn_submit">
-            <input type="submit" disabled={load} value="Hoàn thành" />
+            <input
+              type="submit"
+              disabled={load}
+              value="Hoàn thành"
+              style={{ cursor: "pointer" }}
+            />
           </div>
         </form>
       </div>

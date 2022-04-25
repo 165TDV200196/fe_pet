@@ -6,10 +6,15 @@ export const userData = createAsyncThunk("users/userData", async () => {
   const user = await userApi.checkUser();
   return user;
 });
+export const userInfor = createAsyncThunk("users/userInfor", async (id) => {
+  const user = await userApi.getOne(id);
+  return user;
+});
 const User = createSlice({
   name: "users",
   initialState: {
     user: [],
+    userInfor: [],
     loading: true,
     error: "",
   },
@@ -29,6 +34,9 @@ const User = createSlice({
     [userData.fulfilled]: (state, action) => {
       state.loading = false;
       state.user = action.payload;
+    },
+    [userInfor.fulfilled]: (state, action) => {
+      state.userInfor = action.payload;
     },
   },
 });

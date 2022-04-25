@@ -39,10 +39,9 @@ export default function Comment() {
                       </svg>
                     </div>
                     <div className="text">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Earum, nihil. Totam, quisquam iure minus necessitatibus
-                      quidem incidunt aperiam enim repellendus magnam facilis
-                      omnis illo expedita, sequi neque non iste vel.
+                      Trải nghiệm phục vụ hết sức tuyệt vời mọi người nên thử
+                      qua để những chú thú cưng của mình được hưởng thụ như
+                      những thú cưng quý tộc. Chắc chắn rồi tôi sẽ sớm quay lại.
                     </div>
                     <div className="icon end">
                       <svg
@@ -94,10 +93,9 @@ export default function Comment() {
                       </svg>
                     </div>
                     <div className="text">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Earum, nihil. Totam, quisquam iure minus necessitatibus
-                      quidem incidunt aperiam enim repellendus magnam facilis
-                      omnis illo expedita, sequi neque non iste vel.
+                      Tôi đã đi nhiều nơi như thế này nhưng dường như ở đây là
+                      thiên đường với chú cún của tôi vậy, tôi có thể thấy được
+                      sự hạnh phúc hiện rõ trên khuôn mặt nó.
                     </div>
                     <div className="icon end">
                       <svg
@@ -149,10 +147,10 @@ export default function Comment() {
                       </svg>
                     </div>
                     <div className="text">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Earum, nihil. Totam, quisquam iure minus necessitatibus
-                      quidem incidunt aperiam enim repellendus magnam facilis
-                      omnis illo expedita, sequi neque non iste vel.
+                      Thật tuyệt vời, ở đây có những người cắt tỉa bậc thầy có
+                      thể tạo hình y như trong những bức hình tôi cho anh ta xem
+                      vậy, những người thợ ở đây phải là những người thợ đẳng
+                      cấp 5 sao.
                     </div>
                     <div className="icon end">
                       <svg

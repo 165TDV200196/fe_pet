@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
+import Bill from "../bill/bill";
+import BillDetail from "../bill/billDetail";
 import AddCategory from "../Category/AddCategory";
 import Category from "../Category/Category";
 import category from "../Category/Category";
@@ -13,6 +15,8 @@ import AddNew from "../New/AddNew";
 import New from "../New/New";
 import AddProduct from "../Product/AddProduct";
 import Product from "../Product/Product";
+import ScheduleDetail from "../Schedule/DetailSchedule";
+import Schedule from "../Schedule/Schedule";
 import AddService from "../Service/AddService";
 import Service from "../Service/Service";
 import AddSocialNetwork from "../SocialNetwork/AddSocialNetwork";
@@ -38,6 +42,18 @@ export default function NavContent() {
         <Route exact path={`${path}/New`} component={New} />
         <Route exact path={`${path}/New/AddNew`} component={AddNew} />
         <Route exact path={`${path}/New/AddNew/:id`} component={AddNew} />
+        <Route exact path={`${path}/Bill`} component={Bill} />
+        <Route
+          exact
+          path={`${path}/Bill/DetailBill/:id`}
+          component={BillDetail}
+        />
+        <Route exact path={`${path}/Schedule`} component={Schedule} />
+        <Route
+          exact
+          path={`${path}/Schedule/ScheduleDetail/:id`}
+          component={ScheduleDetail}
+        />
         <Route exact path={`${path}/Tag`} component={Tag} />
         <Route exact path={`${path}/Tag/AddTag`} component={AddTag} />
         <Route exact path={`${path}/Tag/AddTag/:id`} component={AddTag} />

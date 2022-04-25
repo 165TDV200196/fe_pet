@@ -9,12 +9,15 @@ export default function Services() {
     background: `url(${imgDog}) center no-repeat`,
     backgroundSize: "cover",
   };
+
   const [data, setData] = useState(null);
+
   useEffect(() => {
     serviceApi.getServiceHome({ limit: 6 }).then((ok) => {
       setData(ok.data);
     });
   }, []);
+
   return (
     <div className="Services" style={style}>
       <div className="blur"></div>
@@ -32,7 +35,7 @@ export default function Services() {
               <div className="title">{ok.name}</div>
               <div className="description">{ok.description}</div>
               <div className="btn">
-                <Link to="#">Đăng ký ngay</Link>
+                <Link to={`/RegisterService/${ok.id}`}>Đăng ký ngay</Link>
               </div>
             </div>
           ))}

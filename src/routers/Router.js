@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
-import userApi from "../api/userApi";
-import { userData } from "../app/Slice/UserSlice";
+import { userData, userInfor } from "../app/Slice/UserSlice";
 import Nav from "../features/Admin/Nav/Nav";
 import Home from "../features/Home";
 import Footer from "../features/Home/Footer/Footer";
@@ -13,6 +11,7 @@ import DetailNew from "../features/ListNews/DetailNew/DetailNew";
 import ListNews from "../features/ListNews/ListNews";
 import Login from "../features/Login/Login";
 import Register from "../features/Register/Register";
+import RegisterService from "../features/RegisterService/RegisterService";
 import DetailPet from "../features/Shop/DetailPet/DetailPet";
 import ShopPet from "../features/Shop/ShopPet/ShopPet";
 
@@ -22,13 +21,16 @@ const Routers = (props) => {
   // const [user, setUser] = useState(null);
   const [load, setLoad] = useState(false);
   const dispatch = useDispatch();
-  const actionResult = async (page) => {
-    await dispatch(userData());
-  };
-  const user = useSelector((state) => state.user.user);
 
-  useEffect(async () => {
-    actionResult();
+  const user = useSelector((state) => state.user.user);
+  useEffect(() => {
+    if (user.id) {
+      dispatch(userInfor(user.id));
+    }
+  }, [user]);
+
+  useEffect(() => {
+    dispatch(userData());
   }, [load]);
   const checkLoad = () => {
     setLoad(!load);
@@ -36,7 +38,7 @@ const Routers = (props) => {
   const hangdleLogout = (e) => {
     localStorage.removeItem("tokenPet");
     setTimeout(() => {
-      actionResult();
+      dispatch(userData());
     }, 200);
   };
   return (
@@ -58,6 +60,7 @@ const Routers = (props) => {
         <Route path="/Shop/:type/:id" component={DetailPet} />
         <Route path="/Login" component={Login} />
         <Route path="/Register" component={Register} />
+        <Route path="/RegisterService/:id" component={RegisterService} />
         <Route
           path="/InforUser/:id"
           render={() => {

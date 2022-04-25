@@ -1,40 +1,30 @@
 import { messageShowErr, messageShowSuccess } from "../function";
 import axiosClient from "./axiosClient";
 
-class NewApi {
+class BillApi {
   getAll = (params) => {
-    const url = "/news";
-    return axiosClient.get(url, { params });
-  };
-  getNewHome = (params) => {
-    const url = "/news/newHome";
+    const url = "/bills";
     return axiosClient.get(url, { params });
   };
   getOne = (params) => {
-    const url = `/news/${params}`;
+    const url = `/bills/${params}`;
     return axiosClient.get(url).then((data) => {
       return data.data;
     });
   };
-  getOtherNews = (params) => {
-    const url = `/news/otherNews/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
-  };
-  postnew = (params) => {
-    const url = "/news";
+  postbill = (params) => {
+    const url = "/bills";
     return axiosClient
       .post(url, params)
       .then((data) => {
-        messageShowSuccess("Thêm mới thành công!");
+        // messageShowSuccess("Thêm mới thành công!");
       })
       .catch((err) => {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
-  deletenew = (id) => {
-    const url = `/news/${id}`;
+  deletebill = (id) => {
+    const url = `/bills/${id}`;
     return axiosClient
       .delete(url)
       .then((data) => {
@@ -44,8 +34,8 @@ class NewApi {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
-  editnew = (params) => {
-    const url = `/news/${params.id}`;
+  editbill = (params) => {
+    const url = `/bills/${params.id}`;
     return axiosClient
       .patch(url, params)
       .then((data) => {
@@ -56,5 +46,5 @@ class NewApi {
       });
   };
 }
-const newApi = new NewApi();
-export default newApi;
+const billApi = new BillApi();
+export default billApi;

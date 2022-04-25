@@ -89,7 +89,7 @@ export default function MyPet() {
                   {parseInt(ok.price).toLocaleString()} vnđ
                 </div>
 
-                <p className="detail">
+                <div className="detail">
                   Chi tiết ...
                   <div className="detail-content">
                     <div className="description">
@@ -101,7 +101,7 @@ export default function MyPet() {
                       {renderHTML(ok.text)}
                     </div>
                   </div>
-                </p>
+                </div>
               </div>
               <div className="checkadmin">
                 {renderCheckAdmin(ok.checkAdmin)}

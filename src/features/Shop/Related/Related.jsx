@@ -1,10 +1,8 @@
 import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import petApi from "../../../api/petApi";
-import { useLocation } from "react-router-dom";
 import productApi from "../../../api/productApi";
-import img2 from "../../../images/pet4.jpg";
 import "../../../sass/Shop/Related.scss";
 export default function Related({ id, onLoad, load }) {
   const [data, setData] = useState([]);

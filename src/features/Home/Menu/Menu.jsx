@@ -12,7 +12,6 @@ import Cart from "../Cart/Cart";
 
 export default function Menu({ user, setUserMenu }) {
   const [openSelect, setOpenSelect] = useState("hident");
-  console.log("openSelect", openSelect);
   const [initSelect, setinitSelect] = useState("none");
   // const [load, setLoad] = useState(true);
   const MenuEl = useRef(null);
@@ -106,9 +105,11 @@ export default function Menu({ user, setUserMenu }) {
               <li className="item">
                 <Link to="/ListNews">Tin tức</Link>
               </li>
-              <li className="item">
-                <Link to="/Admin">Admin</Link>
-              </li>
+              {user.length !== 0 && (
+                <li className="item">
+                  <Link to="/Admin">Admin</Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -152,8 +153,8 @@ export default function Menu({ user, setUserMenu }) {
                     onClick={() => {
                       localStorage.removeItem("tokenPet");
                       handleLogout();
+                      ClickAvatar();
                     }}
-                    onClick={ClickAvatar}
                   >
                     <div className="icon">{iconLogout}</div>
                     <div className="text">Đăng xuất</div>

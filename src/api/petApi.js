@@ -44,6 +44,15 @@ class PetApi {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
+  updateQuantityPet = (params) => {
+    const url = `/pets/update/quantity`;
+    return axiosClient
+      .patch(url, params)
+      .then((data) => {})
+      .catch((err) => {
+        messageShowErr("Có lỗi xảy ra!");
+      });
+  };
   deletepet = (id) => {
     const url = `/pets/${id}`;
     return axiosClient

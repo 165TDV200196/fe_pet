@@ -13,9 +13,11 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { clickAvatar, clickBar } from "./NavJs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function NavHeading() {
   const barEl = useRef(null);
   const liSelectEL = useRef(null);
+  const user = useSelector((state) => state.user.user);
   useEffect(() => {
     clickBar(barEl.current);
     clickAvatar(liSelectEL.current);
@@ -38,7 +40,7 @@ export default function NavHeading() {
         </li>
         <li className="liSelect" ref={liSelectEL}>
           <div className="avatar">
-            <img src={img1} alt="" />
+            <img src={user?.avatar} alt="" />
           </div>
           <div className=" blurJs"></div>
           <div className="SelectAvatar ">

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import userApi from "../../../api/userApi";
+import { userInfor } from "../../../app/Slice/UserSlice";
 import { storage } from "../../../firebase";
 import { getMale, setMale } from "../../../function";
 import { camera } from "../../Admin/svg/IconSvg";
@@ -48,6 +50,7 @@ export default function EditInformation() {
       });
     }
   }, []);
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     if (id) {
@@ -57,26 +60,34 @@ export default function EditInformation() {
           .ref("imagesUser")
           .child(img.name)
           .getDownloadURL();
-        await userApi.edituser({
-          name: data.name,
-          avatar: anh,
-          address: data.address,
-          phone: data.phone,
-          male: setMale(data.male),
-          firstName: data.firstName,
-          lastName: data.lastName,
-          id: id,
-        });
+        await userApi
+          .edituser({
+            name: data.name,
+            avatar: anh,
+            address: data.address,
+            phone: data.phone,
+            male: setMale(data.male),
+            firstName: data.firstName,
+            lastName: data.lastName,
+            id: id,
+          })
+          .then((ok) => {
+            dispatch(userInfor(id));
+          });
       } else {
-        await userApi.edituser({
-          name: data.name,
-          address: data.address,
-          phone: data.phone,
-          male: setMale(data.male),
-          firstName: data.firstName,
-          lastName: data.lastName,
-          id: id,
-        });
+        await userApi
+          .edituser({
+            name: data.name,
+            address: data.address,
+            phone: data.phone,
+            male: setMale(data.male),
+            firstName: data.firstName,
+            lastName: data.lastName,
+            id: id,
+          })
+          .then((ok) => {
+            dispatch(userInfor(id));
+          });
       }
     }
   };
@@ -187,7 +198,11 @@ export default function EditInformation() {
             )}
           </div>
           <div className="btn_submit">
-            <input type="submit" value="Sửa user" />
+            <input
+              type="submit"
+              value="Sửa user"
+              style={{ cursor: "pointer" }}
+            />
           </div>
         </form>
       </div>

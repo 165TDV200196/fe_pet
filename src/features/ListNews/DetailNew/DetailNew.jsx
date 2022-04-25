@@ -11,6 +11,7 @@ import Banner from "../../Banner/Banner";
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 export default function DetailNew() {
   const [data, setData] = useState(null);
+  const [otherNews, setOtherNews] = useState(null);
   const listBread = [
     { name: "Trang chủ", link: "/" },
     { name: "Tin tức", link: "/ListNews" },
@@ -27,7 +28,15 @@ export default function DetailNew() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    newApi
+      .getOtherNews(id)
+      .then((ok) => {
+        setOtherNews(ok);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
   return (
     <div className="DetailNew">
       <Banner />
@@ -76,73 +85,18 @@ export default function DetailNew() {
                 <div className="other-new-title">Có thể bạn quan tâm</div>
                 <div className="other-new-content">
                   <ul>
-                    <li>
-                      <Link to="#">
-                        <div className="new-other">
-                          <div className="img">
-                            <img src={img1} alt="" />
+                    {otherNews?.rows?.map((ok) => (
+                      <li key={ok.id}>
+                        <Link to={`/ListNews/${ok.id}`}>
+                          <div className="new-other">
+                            <div className="img">
+                              <img src={ok.avatar} alt="" />
+                            </div>
+                            <div className="title">{ok.name}</div>
                           </div>
-                          <div className="title">
-                            Làm cho thú cưng của bạn trở nên hạnh phúc hơn bao
-                            giờ hết.Làm cho thú cưng của bạn trở nên hạnh phúc
-                            hơn bao giờ hết.
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#">
-                        <div className="new-other">
-                          <div className="img">
-                            <img src={img1} alt="" />
-                          </div>
-                          <div className="title">
-                            Làm cho thú cưng của bạn trở nên hạnh phúc hơn bao
-                            giờ hết.Làm cho thú cưng của bạn trở nên hạnh phúc
-                            hơn bao giờ hết.
-                          </div>
-                        </div>
-                      </Link>
-                    </li>{" "}
-                    <li>
-                      <Link to="#">
-                        <div className="new-other">
-                          <div className="img">
-                            <img src={img1} alt="" />
-                          </div>
-                          <div className="title">
-                            Làm cho thú cưng của bạn trở nên hạnh phúc hơn bao
-                            giờ hết.
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#">
-                        <div className="new-other">
-                          <div className="img">
-                            <img src={img1} alt="" />
-                          </div>
-                          <div className="title">
-                            Làm cho thú cưng của bạn trở nên hạnh phúc hơn bao
-                            giờ hết.
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#">
-                        <div className="new-other">
-                          <div className="img">
-                            <img src={img1} alt="" />
-                          </div>
-                          <div className="title">
-                            Làm cho thú cưng của bạn trở nên hạnh phúc hơn bao
-                            giờ hết.
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

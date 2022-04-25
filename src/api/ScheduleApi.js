@@ -1,29 +1,19 @@
 import { messageShowErr, messageShowSuccess } from "../function";
 import axiosClient from "./axiosClient";
 
-class NewApi {
+class ScheduleApi {
   getAll = (params) => {
-    const url = "/news";
-    return axiosClient.get(url, { params });
-  };
-  getNewHome = (params) => {
-    const url = "/news/newHome";
+    const url = "/schedules";
     return axiosClient.get(url, { params });
   };
   getOne = (params) => {
-    const url = `/news/${params}`;
+    const url = `/schedules/${params}`;
     return axiosClient.get(url).then((data) => {
       return data.data;
     });
   };
-  getOtherNews = (params) => {
-    const url = `/news/otherNews/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
-  };
-  postnew = (params) => {
-    const url = "/news";
+  postschedule = (params) => {
+    const url = "/schedules";
     return axiosClient
       .post(url, params)
       .then((data) => {
@@ -33,8 +23,8 @@ class NewApi {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
-  deletenew = (id) => {
-    const url = `/news/${id}`;
+  deleteschedule = (id) => {
+    const url = `/schedules/${id}`;
     return axiosClient
       .delete(url)
       .then((data) => {
@@ -44,8 +34,8 @@ class NewApi {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
-  editnew = (params) => {
-    const url = `/news/${params.id}`;
+  editschedule = (params) => {
+    const url = `/schedules/${params.id}`;
     return axiosClient
       .patch(url, params)
       .then((data) => {
@@ -56,5 +46,5 @@ class NewApi {
       });
   };
 }
-const newApi = new NewApi();
-export default newApi;
+const scheduleApi = new ScheduleApi();
+export default scheduleApi;

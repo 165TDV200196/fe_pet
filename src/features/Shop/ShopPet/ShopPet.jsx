@@ -1,11 +1,17 @@
 import { Container, Grid } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 import categoryApi from "../../../api/CategoryApi";
 import petApi from "../../../api/petApi";
-import { countPagination } from "../../../function";
+import {
+  countPagination,
+  messageShowErr,
+  messageShowSuccess,
+} from "../../../function";
 import "../../../sass/Shop/ShopPet.scss";
+import { addListCart } from "../../../app/Slice/CartSlide";
 import { search } from "../../Admin/svg/IconSvg";
 import Banner from "../../Banner/Banner";
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
@@ -21,7 +27,7 @@ export default function ShopPet() {
   const [category, setCategory] = useState("Thức ăn cho chó");
   const [countPet, setCountPet] = useState(null);
   const typingTimeout = useRef(null);
-
+  const listCart = useSelector((state) => state.cart.listCart);
   useEffect(() => {
     petApi.getShop({ page, type, category, petOrProduct, name }).then((ok) => {
       setData(ok.data);
@@ -56,6 +62,21 @@ export default function ShopPet() {
   const onChangeCategory = (e) => {
     setPetOrProduct("product");
     setCategory(e);
+  };
+
+  const dispatch = useDispatch();
+
+  const handleAddCart = (infor) => {
+    let isExist = listCart.find(
+      (x) => x.id === infor.id && x.name === infor.name,
+    );
+    infor = { ...infor, quantityCurrent: 1 };
+    if (isExist) {
+      messageShowErr("Sản phẩm đã có trong giỏ hàng!");
+    } else {
+      dispatch(addListCart(infor));
+      messageShowSuccess("Thêm giỏ hàng thành công!");
+    }
   };
 
   return (
@@ -123,7 +144,12 @@ export default function ShopPet() {
                   <div className="item-pet">
                     <div className="img">
                       <img src={ok.avatar} alt="" />
-                      <div className="add-cart">Thêm vào giỏ</div>
+                      <div
+                        className="add-cart"
+                        onClick={() => handleAddCart(ok)}
+                      >
+                        Thêm vào giỏ
+                      </div>
                       <div className="blur"></div>
                     </div>
                     <div className="name">

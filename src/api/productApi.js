@@ -45,6 +45,15 @@ class ProductApi {
         messageShowErr("Có lỗi xảy ra!");
       });
   };
+  updateQuantityProduct = (params) => {
+    const url = `/products/quantity`;
+    return axiosClient
+      .patch(url, params)
+      .then((data) => {})
+      .catch((err) => {
+        messageShowErr("Có lỗi xảy ra!");
+      });
+  };
 }
 const productApi = new ProductApi();
 export default productApi;

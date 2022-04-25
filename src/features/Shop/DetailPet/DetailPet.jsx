@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import renderHtml from "react-render-html";
 import { useParams } from "react-router-dom";
 import petApi from "../../../api/petApi";
@@ -10,14 +11,23 @@ import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 import Related from "../Related/Related";
 import "./DetailPetJs";
 import { ClickImg } from "./DetailPetJs";
+import { addListCart, updateListCart } from "../../../app/Slice/CartSlide";
+import { messageShowErr, messageShowSuccess } from "../../../function";
 
 export default function DetailPet() {
   const [data, setData] = useState(null);
   const [load, setLoad] = useState(false);
   const [quantityNumber, setQuantityNumber] = useState(1);
+  const listCart = useSelector((state) => state.cart.listCart);
   const hangdleQuantityNumber = (e) => {
-    setQuantityNumber(e.target.value);
+    let number = e.target.value;
+    if (Number(number) !== isNaN && number > 0 && number <= data.quantity) {
+      setQuantityNumber(Number(number));
+    } else {
+      setQuantityNumber(0);
+    }
   };
+  const dispatch = useDispatch();
 
   const listBread = [
     { name: "Trang chủ", link: "/" },
@@ -45,6 +55,25 @@ export default function DetailPet() {
   useEffect(() => {
     ClickImg(imgActiveEl.current, listImgEl.current);
   }, [data]);
+
+  const handleAddCart = (infor) => {
+    let isExist = listCart.find(
+      (x) => x.id === infor.id && x.name === infor.name,
+    );
+    infor = { ...infor, quantityCurrent: quantityNumber };
+
+    if (isExist) {
+      if (isExist.quantityCurrent !== quantityNumber) {
+        dispatch(updateListCart(infor));
+        messageShowSuccess("Cập nhật số lượng thành công!");
+      } else {
+        messageShowErr("Sản phẩm đã có trong giỏ hàng!");
+      }
+    } else {
+      dispatch(addListCart(infor));
+      messageShowSuccess("Thêm giỏ hàng thành công!");
+    }
+  };
 
   return (
     <div className="DetailPet">
@@ -94,24 +123,22 @@ export default function DetailPet() {
                   {renderHtml(data ? data.text : "")}
                 </div>
               </div>
-              {type !== "pet" ? (
-                <div className="quantity">
-                  <div className="title">Số lượng: {data?.quantity}</div>
-                  <div className="title">
-                    Nhập số lượng muốn mua:{" "}
-                    <input
-                      type="number"
-                      className="input_quantity"
-                      value={quantityNumber}
-                      onChange={hangdleQuantityNumber}
-                    />
-                  </div>
+              <div className="quantity">
+                <div className="title">Số lượng: {data?.quantity}</div>
+                <div className="title">
+                  Nhập số lượng muốn mua:{" "}
+                  <input
+                    type="number"
+                    className="input_quantity"
+                    value={quantityNumber}
+                    onChange={hangdleQuantityNumber}
+                  />
                 </div>
-              ) : (
-                ""
-              )}
+              </div>
               <div className="button">
-                <div className="add-cart">Thêm vào giỏ</div>
+                <div className="add-cart" onClick={() => handleAddCart(data)}>
+                  Thêm vào giỏ
+                </div>
                 <div className="buy">Mua ngay</div>
               </div>
             </div>

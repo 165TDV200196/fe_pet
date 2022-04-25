@@ -29,7 +29,6 @@ export const messageShowErr = (e) => {
   return Toastify({
     text: e,
     duration: 3000,
-    destination: "https://github.com/apvarun/toastify-js",
     newWindow: true,
     close: true,
     gravity: "top", // `top` or `bottom`
@@ -43,7 +42,6 @@ export const messageShowSuccess = (e) => {
   return Toastify({
     text: e,
     duration: 3000,
-    destination: "https://github.com/apvarun/toastify-js",
     newWindow: true,
     close: true,
     gravity: "top", // `top` or `bottom`
@@ -60,7 +58,7 @@ export const getName = (e) => {
   return { firtsName: firtName, lastName: lastName };
 };
 export const getMale = (e) => {
-  if (e == 1) {
+  if (e === 1) {
     return "Nam";
   } else {
     return "Nữ";
