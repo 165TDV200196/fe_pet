@@ -9,11 +9,12 @@ export default function Slide() {
   const slideEl = useRef(null);
 
   useEffect(() => {
+    //code slide auto chạy
     let slides = slideEl.current.querySelectorAll(".slide-item");
     let slideIndex = 0;
     const slideShow = (n) => {
       let slideActive = slideEl.current.querySelector(
-        ".slide-item.slide-active"
+        ".slide-item.slide-active",
       );
       slideActive.classList.remove("slide-active");
       slides[n].classList.add("slide-active");

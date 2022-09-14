@@ -20,7 +20,6 @@ export default function Related({ id, onLoad, load }) {
   };
 
   useEffect(() => {
-    console.log("getType :", getType());
     if (getType() === "pet") {
       petApi.getAll({ page: 1 }).then((ok) => {
         setData(cutData(ok.data));

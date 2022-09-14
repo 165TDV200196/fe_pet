@@ -11,9 +11,9 @@ import {
 import Cart from "../Cart/Cart";
 
 export default function Menu({ user, setUserMenu }) {
+  console.log("user", user);
   const [openSelect, setOpenSelect] = useState("hident");
   const [initSelect, setinitSelect] = useState("none");
-  // const [load, setLoad] = useState(true);
   const MenuEl = useRef(null);
   const MenuHidentEl = useRef(null);
   const MenuBarEl = useRef(null);
@@ -105,7 +105,7 @@ export default function Menu({ user, setUserMenu }) {
               <li className="item">
                 <Link to="/ListNews">Tin tức</Link>
               </li>
-              {user.length !== 0 && (
+              {user?.role === "admin" && (
                 <li className="item">
                   <Link to="/Admin">Admin</Link>
                 </li>

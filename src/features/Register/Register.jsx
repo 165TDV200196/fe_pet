@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import userApi from "../../api/userApi";
+import userRoleApi from "../../api/userRoleApi";
 import { getName, messageShowErr, messageShowSuccess } from "../../function";
 import imgDog from "../../images/login.png";
 import "../../sass/Login/Login.scss";
@@ -50,8 +51,12 @@ export default function Register() {
         if (ok?.message === "Email đã tồn tại!") {
           messageShowErr("Email của bạn đã được đăng ký!");
         } else {
+          userRoleApi.post({
+            userId: ok.data.id,
+            roleId: 2,
+          });
           messageShowSuccess("Đăng ký thành công!");
-          history.push("/Login");
+          history.push("/login");
         }
       });
   };

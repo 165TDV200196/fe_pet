@@ -20,7 +20,6 @@ export default function Payment({
   listCart,
 }) {
   const [openPopconfirm, setOpenPopconfirm] = useState(false);
-  console.log(listCart);
   const handleClose = () => {
     onClose();
   };
@@ -59,6 +58,7 @@ export default function Payment({
         price: userInfor.price,
       })
       .then((ok) => {
+        //xử lý khi người dùng bấm đồng ý
         let quantityProduct = [];
         let quantityPet = [];
         listCart.forEach((el) => {

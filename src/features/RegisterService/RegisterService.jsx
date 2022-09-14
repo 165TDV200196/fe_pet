@@ -22,7 +22,6 @@ export default function RegisterService() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
   const { id } = useParams();
@@ -64,12 +63,15 @@ export default function RegisterService() {
   const onchangeTypePet = (e) => {
     setTypePet(e.label);
   };
+
   const onchangeTypeService = (e) => {
     setTypeService(e.label);
   };
+
   const onchangeWeight = (e) => {
     setTypeWeight(e.label);
   };
+
   const onSubmit = (data) => {
     scheduleApi.postschedule({
       name: data.name,

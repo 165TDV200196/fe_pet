@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { userData, userInfor } from "../app/Slice/UserSlice";
 import Nav from "../features/Admin/Nav/Nav";
+import Error from "../features/Error/Error";
 import Home from "../features/Home";
 import Footer from "../features/Home/Footer/Footer";
 import Menu from "../features/Home/Menu/Menu.jsx";
@@ -45,6 +46,7 @@ const Routers = (props) => {
     <div>
       {pathName === "/login" ||
       pathName === "/Register" ||
+      user.role !== "admin" ||
       pathName.includes("Admin") ? (
         ""
       ) : (
@@ -70,12 +72,13 @@ const Routers = (props) => {
         <Route
           path="/Admin"
           render={() => {
-            return user.length === 0 ? <Login /> : <Nav />;
+            return user.role !== "admin" ? <Error /> : <Nav />;
           }}
         />
       </Switch>
       {pathName === "/login" ||
       pathName === "/Register" ||
+      user.role !== "admin" ||
       pathName.includes("Admin") ? (
         ""
       ) : (

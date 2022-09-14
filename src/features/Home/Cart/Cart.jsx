@@ -18,6 +18,7 @@ export default function Cart() {
   };
 
   const handlePayment = () => {
+    // xử lý khi người dùng thanh toán
     if (userInfor.length === 0) {
       messageShowErr("Bạn cần đăng nhập trước!");
     } else {
