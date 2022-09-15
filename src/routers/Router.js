@@ -42,12 +42,12 @@ const Routers = (props) => {
       dispatch(userData());
     }, 200);
   };
+  console.log("pathName", pathName);
   return (
     <div>
-      {pathName === "/login" ||
-      pathName === "/Register" ||
-      user.role !== "admin" ||
-      pathName.includes("Admin") ? (
+      {pathName.toLocaleLowerCase() === "/login" ||
+      pathName.toLocaleLowerCase() === "/register" ||
+      pathName.toLocaleLowerCase() === "/admin" ? (
         ""
       ) : (
         <Menu user={user} setUserMenu={hangdleLogout} loadUser={checkLoad} />
@@ -76,10 +76,9 @@ const Routers = (props) => {
           }}
         />
       </Switch>
-      {pathName === "/login" ||
-      pathName === "/Register" ||
-      user.role !== "admin" ||
-      pathName.includes("Admin") ? (
+      {pathName.toLocaleLowerCase() === "/login" ||
+      pathName.toLocaleLowerCase() === "/register" ||
+      pathName.toLocaleLowerCase() === "/admin" ? (
         ""
       ) : (
         <Footer />
