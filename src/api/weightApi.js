@@ -6,44 +6,37 @@ class WeightApi {
     const url = "/weights";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/weights/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  postWeight = (params) => {
+  postWeight = async (params) => {
     const url = "/weights";
-    return axiosClient
-      .post(url, params)
-      .then((data) => {
-        messageShowSuccess("Thêm mới thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.post(url, params);
+      messageShowSuccess("Thêm mới thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  deleteWeight = (id) => {
+  deleteWeight = async (id) => {
     const url = `/weights/${id}`;
-    return axiosClient
-      .delete(url)
-      .then((data) => {
-        messageShowSuccess("Xoá thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.delete(url);
+      messageShowSuccess("Xoá thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  editWeight = (params) => {
+  editWeight = async (params) => {
     const url = `/weights/${params.id}`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {
-        messageShowSuccess("Sửa thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.patch(url, params);
+      messageShowSuccess("Sửa thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
 }
 const weightApi = new WeightApi();

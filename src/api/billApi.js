@@ -6,44 +6,36 @@ class BillApi {
     const url = "/bills";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/bills/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  postbill = (params) => {
+  postbill = async (params) => {
     const url = "/bills";
-    return axiosClient
-      .post(url, params)
-      .then((data) => {
-        // messageShowSuccess("Thêm mới thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.post(url, params);
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  deletebill = (id) => {
+  deletebill = async (id) => {
     const url = `/bills/${id}`;
-    return axiosClient
-      .delete(url)
-      .then((data) => {
-        messageShowSuccess("Xoá thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.delete(url);
+      messageShowSuccess("Xoá thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  editbill = (params) => {
+  editbill = async (params) => {
     const url = `/bills/${params.id}`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {
-        messageShowSuccess("Sửa thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.patch(url, params);
+      messageShowSuccess("Sửa thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
 }
 const billApi = new BillApi();

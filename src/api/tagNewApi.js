@@ -5,11 +5,10 @@ class TagNewApi {
     const url = "/tagNews";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/tagNews/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
   posttagNew = (params) => {
     const url = "/tagNews";

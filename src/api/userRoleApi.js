@@ -5,11 +5,10 @@ class UserRoleApi {
     const url = "/userRoles";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/userRoles/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
   post = (params) => {
     const url = "/userRoles";

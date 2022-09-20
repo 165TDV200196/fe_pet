@@ -14,55 +14,47 @@ class PetApi {
     const url = "/shops";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/pets/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  getCheckAdmin = (params) => {
+  getCheckAdmin = async (params) => {
     const url = `/pets/checkPet`;
-    return axiosClient.get(url, { params }).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url, { params });
+    return data.data;
   };
-  getPetUser = (params) => {
+  getPetUser = async (params) => {
     const url = `/pets/getPetUser/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  postpet = (params) => {
+  postpet = async (params) => {
     console.log("PetApi ~ params", params);
     const url = "/pets";
-    return axiosClient
-      .post(url, params)
-      .then((data) => {
-        messageShowSuccess("Tạo mới thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.post(url, params);
+      messageShowSuccess("Tạo mới thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  updateQuantityPet = (params) => {
+  updateQuantityPet = async (params) => {
     const url = `/pets/update/quantity`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {})
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.patch(url, params);
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  deletepet = (id) => {
+  deletepet = async (id) => {
     const url = `/pets/${id}`;
-    return axiosClient
-      .delete(url)
-      .then((data) => {
-        messageShowSuccess("Xoá thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.delete(url);
+      messageShowSuccess("Xoá thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
   editpet = (params) => {
     const url = `/pets/${params.id}`;

@@ -15,37 +15,32 @@ class UserApi {
       return [];
     }
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/users/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
   postuser = (params) => {
     const url = "/users";
     return axiosClient.post(url, params);
   };
-  deleteuser = (id) => {
+  deleteuser = async (id) => {
     const url = `/users/${id}`;
-    return axiosClient
-      .delete(url)
-      .then((data) => {
-        messageShowSuccess("Xoá thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.delete(url);
+      messageShowSuccess("Xoá thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  edituser = (params) => {
+  edituser = async (params) => {
     const url = `/users/${params.id}`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {
-        messageShowSuccess("Sửa thông tin thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.patch(url, params);
+      messageShowSuccess("Sửa thông tin thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
 }
 const userApi = new UserApi();

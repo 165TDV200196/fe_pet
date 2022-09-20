@@ -5,11 +5,10 @@ class ImageProductApi {
     const url = "/imageProducts";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/imageProducts/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
   postimageProduct = (params) => {
     const url = "/imageProducts";

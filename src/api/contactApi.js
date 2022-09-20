@@ -6,44 +6,37 @@ class ContactApi {
     const url = "/contacts";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/contacts/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  postcontact = (params) => {
+  postcontact = async (params) => {
     const url = "/contacts";
-    return axiosClient
-      .post(url, params)
-      .then((data) => {
-        messageShowSuccess("Thêm mới thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.post(url, params);
+      messageShowSuccess("Thêm mới thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  deletecontact = (id) => {
+  deletecontact = async (id) => {
     const url = `/contacts/${id}`;
-    return axiosClient
-      .delete(url)
-      .then((data) => {
-        messageShowSuccess("Xoá thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.delete(url);
+      messageShowSuccess("Xoá thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  editcontact = (params) => {
+  editcontact = async (params) => {
     const url = `/contacts/${params.id}`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {
-        messageShowSuccess("Sửa thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.patch(url, params);
+      messageShowSuccess("Sửa thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
 }
 const contactApi = new ContactApi();

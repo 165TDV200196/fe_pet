@@ -10,50 +10,42 @@ class NewApi {
     const url = "/news/newHome";
     return axiosClient.get(url, { params });
   };
-  getOne = (params) => {
+  getOne = async (params) => {
     const url = `/news/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  getOtherNews = (params) => {
+  getOtherNews = async (params) => {
     const url = `/news/otherNews/${params}`;
-    return axiosClient.get(url).then((data) => {
-      return data.data;
-    });
+    const data = await axiosClient.get(url);
+    return data.data;
   };
-  postnew = (params) => {
+  postnew = async (params) => {
     const url = "/news";
-    return axiosClient
-      .post(url, params)
-      .then((data) => {
-        messageShowSuccess("Thêm mới thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.post(url, params);
+      messageShowSuccess("Thêm mới thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  deletenew = (id) => {
+  deletenew = async (id) => {
     const url = `/news/${id}`;
-    return axiosClient
-      .delete(url)
-      .then((data) => {
-        messageShowSuccess("Xoá thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.delete(url);
+      messageShowSuccess("Xoá thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
-  editnew = (params) => {
+  editnew = async (params) => {
     const url = `/news/${params.id}`;
-    return axiosClient
-      .patch(url, params)
-      .then((data) => {
-        messageShowSuccess("Sửa thành công!");
-      })
-      .catch((err) => {
-        messageShowErr("Có lỗi xảy ra!");
-      });
+    try {
+      const data = await axiosClient.patch(url, params);
+      messageShowSuccess("Sửa thành công!");
+    } catch (err) {
+      messageShowErr("Có lỗi xảy ra!");
+    }
   };
 }
 const newApi = new NewApi();
