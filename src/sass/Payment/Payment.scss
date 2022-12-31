@@ -1,0 +1,55 @@
+@import "../Variable.scss";
+.thanhtoan {
+    padding: 50px 70px;
+    text-align: center;
+    header {
+        font-size: 2rem;
+        text-align: center;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .content {
+        display: flex;
+        margin-top: 5rem;
+        .info {
+            text-align: left;
+            width: 50%;
+            p {
+                font-size: 1.1rem;
+                padding: .5rem 0;
+            }
+        }
+        .input_payment {
+            width: 50%;
+            form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .StripeElement {
+                    height: 20px;
+                    max-width: 500px;
+                    width: 500px;
+                    margin-bottom: 50px;
+                }
+                button {
+                    margin-top: 4rem;
+                    margin: 0 auto;
+                    width: 50%;
+                    height: 40px;
+                    background-color: $colorOrange;
+                    border: none;
+                    color: white;
+                    transition: .5s;
+                    &:hover {
+                        background-color: white;
+                        border: 1px solid $colorOrange;
+                        color: $colorOrange;
+                    }
+                }
+            }
+            // width: 50%;
+        }
+    }
+}

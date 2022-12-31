@@ -11,6 +11,7 @@ import InforUser from "../features/InforUser/InforUser";
 import DetailNew from "../features/ListNews/DetailNew/DetailNew";
 import ListNews from "../features/ListNews/ListNews";
 import Login from "../features/Login/Login";
+import Payment from "../features/Payment/Payment";
 import Register from "../features/Register/Register";
 import RegisterService from "../features/RegisterService/RegisterService";
 import DetailPet from "../features/Shop/DetailPet/DetailPet";
@@ -19,7 +20,6 @@ import ShopPet from "../features/Shop/ShopPet/ShopPet";
 const Routers = (props) => {
     const { location } = props;
     const pathName = location.pathname;
-    console.log('pathName', pathName)
     const [load, setLoad] = useState(false);
     const dispatch = useDispatch();
 
@@ -44,14 +44,17 @@ const Routers = (props) => {
     };
 
     const getFirstPathName = (pathName) => {
-        let arrPathName = pathName.split("/")
-        return arrPathName[1].toLocaleLowerCase()
-    }
+        let arrPathName = pathName.split("/");
+        return arrPathName[1].toLocaleLowerCase();
+    };
     return (
         <div>
-            {getFirstPathName(pathName) !== "login" && getFirstPathName(pathName) !== "register" && getFirstPathName(pathName) !== "admin" && (
-                <Menu user={user} setUserMenu={hangdleLogout} loadUser={checkLoad} />
-            )}
+            {getFirstPathName(pathName) !== "login" &&
+                getFirstPathName(pathName) !== "register" &&
+                getFirstPathName(pathName) !== "admin" &&
+                getFirstPathName(pathName) !== "purchase" && (
+                    <Menu user={user} setUserMenu={hangdleLogout} loadUser={checkLoad} />
+                )}
             <Switch>
                 <Route exact path="/">
                     <Home />
@@ -62,6 +65,7 @@ const Routers = (props) => {
                 <Route path="/Shop/:type/:id" component={DetailPet} />
                 <Route path="/Login" component={Login} />
                 <Route path="/Register" component={Register} />
+                <Route path="/Purchase" component={Payment} />
                 <Route path="/RegisterService/:id" component={RegisterService} />
                 <Route
                     path="/InforUser/:id"
@@ -76,9 +80,10 @@ const Routers = (props) => {
                     }}
                 />
             </Switch>
-            {getFirstPathName(pathName) !== "login" && getFirstPathName(pathName) !== "register" && getFirstPathName(pathName) !== "admin" && (
-                <Footer />
-            )}
+            {getFirstPathName(pathName) !== "login" &&
+                getFirstPathName(pathName) !== "register" &&
+                getFirstPathName(pathName) !== "admin" &&
+                getFirstPathName(pathName) !== "purchase" && <Footer />}
         </div>
     );
 };

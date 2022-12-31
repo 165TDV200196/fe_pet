@@ -8,12 +8,12 @@ import Routers from "./routers/Router";
 import "./sass/Public.scss";
 import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
-  <Router>
-    <Provider store={store}>
-      <Routers />
-    </Provider>
-  </Router>,
-  document.getElementById("root"),
+    <Router>
+        <Provider store={store}>
+            <Routers />
+        </Provider>
+    </Router>,
+    document.getElementById("root")
 );
 
 serviceWorker.unregister();

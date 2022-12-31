@@ -5,13 +5,7 @@ import { Link } from "react-router-dom";
 import "../../../sass/Admin/Table.scss";
 import { dot, edit, trash } from "../svg/IconSvg";
 import { showAction } from "./TableJs";
-export default function Table({
-    dataSource,
-    titleTable,
-    onchangeEdit,
-    onchangeDelete,
-    hidentDot,
-}) {
+export default function Table({ dataSource, titleTable, onchangeEdit, onchangeDelete, hidentDot }) {
     const tableEl = useRef(null);
     const blurEl = useRef(null);
     useEffect(() => {

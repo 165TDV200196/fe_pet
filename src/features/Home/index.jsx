@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Payment from "../Payment/Payment";
 import AboutUs from "./AboutUs/AboutUs.jsx";
 import Comment from "./Comment/Comment.jsx";
 import Gallery from "./Gallery/Gallery.jsx";
@@ -8,16 +9,14 @@ import Services from "./Services/Services.jsx";
 import Slide from "./Slide/Slide.jsx";
 
 export default function Home() {
-  const pr = useParams();
-  console.log("pr", pr);
-  return (
-    <>
-      <Slide />
-      <AboutUs />
-      <Services />
-      <Comment />
-      <Gallery />
-      <News />
-    </>
-  );
+    return (
+        <>
+            <Slide />
+            <AboutUs />
+            <Services />
+            <Comment />
+            <Gallery />
+            <News />
+        </>
+    );
 }
