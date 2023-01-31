@@ -65,6 +65,7 @@ const Routers = (props) => {
                 <Route path="/Shop/:type/:id" component={DetailPet} />
                 <Route path="/Login" component={Login} />
                 <Route path="/Register" component={Register} />
+                <Route path="/hihi" component={TestApiMomo} />
                 <Route path="/Purchase" component={Payment} />
                 <Route path="/RegisterService/:id" component={RegisterService} />
                 <Route
@@ -87,4 +88,8 @@ const Routers = (props) => {
         </div>
     );
 };
+
+const TestApiMomo = () => {
+    return <div>hihi</div>
+}
 export default withRouter(Routers);

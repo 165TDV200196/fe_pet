@@ -43,7 +43,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "format": "prettier --watch \"**/*.{js,jsx}\"",
+        "format": "prettier --write \"**/*.{js,jsx}\"",
         "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
     },
     "eslintConfig": {
